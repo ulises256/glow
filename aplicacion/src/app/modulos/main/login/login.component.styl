@@ -1,0 +1,105 @@
+.input-layout
+    width: 100%;
+    flex: 1 1 auto;
+
+transition(duracion, delay)
+    -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    -webkit-transition-delay delay ease-in-out
+    transition-delay delay ease-in-out
+
+div
+    display flex
+
+*
+    font-family Loto
+    font-weight 100
+
+.login
+    justify-content center
+    align-items center
+    width 100%
+    height 100%
+    .login-content
+        flex-direction column
+        justify-content center
+        align-items center
+        width 90%
+        height 100%
+        color white
+        .cabeza, .cuerpo, .pies, .contenido-precios, .back-login-icons, .contenido-icons
+            height 80%
+            width 100%
+            justify-content center
+            align-items center
+        .fila1
+            display flex
+            justify-content flex-start
+            align-items center
+            height 75%
+            .contador
+                display flex
+                justify-content center
+                align-items center
+                position relative
+                width 300px
+                height 150px                
+                .tiempo
+                    display flex
+                    flex-direction column
+                    justify-content center
+                    align-items center
+                    color white
+                    background-color naranja
+                    width 255px
+                    height 75px
+                    z-index 2
+                    h3, p
+                        font-family Loto
+                        margin 0px
+                    h3
+                        font-size 18px
+                svg
+                    position absolute
+                    transform translate(0px, -27px) rotate(25deg)
+                    path
+                        fill naranja
+        .cuerpo
+            width 90%
+            .tito
+                flex 1
+                justify-content flex-end
+                h1
+                    font-size 80px
+                    font-family Bebas
+                    font-weight 100
+            .back-login-icons
+                flex 1.5
+                position relative
+                img
+                    width 80%
+                    height 100%
+                .contenido-icons
+                    position absolute
+                    width 100%
+                    a
+                        margin 20px 20px 20px 20px
+                        transition(500ms, 0)
+                        &:hover
+                            transform scale(1.5)
+                        svg
+                            width 68px
+                            height 68px
+                            path
+                                fill #b7004b
+        .pies
+            .di
+                flex 1
+            p
+                flex 1
+                font-size 10px
+                justify-content center
+                color gray
+
+            .do
+                flex: 1

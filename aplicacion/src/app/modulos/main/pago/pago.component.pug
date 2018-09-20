@@ -1,0 +1,76 @@
+//- ngx-loading([show]="status==0" [config]="{ backdropBorderRadius: '12px' }")
+.boleto
+	.boleto-content
+		.fila1
+			.contador(*ngIf="time1$")
+				.tiempo(*ngIf="time1$ | async as time1")
+					p El precio elevará su costo en:
+					h3 {{time1.days}} dias {{time1.hours}} hrs
+				include ../partials/manchita.pug
+		.fila2
+			.title
+				h1 PAGO
+				p.usuario {{usuario?.getNombre()}}
+			.cuadrado
+				.fondo-cuadro
+					.card
+						.head
+							.debito
+								h2 DÉBITO
+								.iconos
+									img(src="assets/images/iconos-pagos/cards1.png")
+							.credito
+								h2 CRÉDITO
+								.iconos
+									img(src="assets/images/iconos-pagos/cards2.png")
+						.formulario
+							form([formGroup]="tarjetaForm" id="payment-form" (ngSubmit)="cobrar(tarjetaForm)" novalidate).formulario.mat-elevation-z8
+								.contenido
+									input(type="hidden" name="divice_id_token" id="divice_id_token")
+									.nombre
+										label(for="nombre") Nombre Completo
+										input(type="text" id="nombre" formControlName="nombre"  placeholder="Como aparece en la tarjeta" autocomplete="off" required)
+									.tarjeta
+										label(for="tarjeta") Número de tarjeta
+										input( id="tarjeta" type="password" formControlName="tarjeta"  placeholder="1111222233334444"  autocomplete="off" required)
+									.fechasycodigo
+										.fecha
+											label(for="fecha") Fecha de expiración
+											.inputs
+												input(type="text"  id="fecha" formControlName="mes"  placeholder="Mes" autocomplete="off" required)
+												input(type="text"  id="field1" formControlName="ano"  placeholder="Año" autocomplete="off" required)
+										.codigo
+											label(for="codigo") Código de seguridad
+											input(type="password"  id="codigo" formControlName="codigo" placeholder="3 digitos" autocomplete="off" required)
+									.erros
+										mat-error(*ngFor='let validation of tarteja_mensajes_errores .nombre')
+											mat-error.error-message(*ngIf="tarjetaForm.get('nombre').hasError(validation.type) && (tarjetaForm.get('nombre').dirty || tarjetaForm.get('nombre').touched)") {{validation.message}}
+										mat-error(*ngFor='let validation of tarteja_mensajes_errores .tarjeta')
+											mat-error.error-message(*ngIf="tarjetaForm.get('tarjeta').hasError(validation.type) && (tarjetaForm.get('tarjeta').dirty || tarjetaForm.get('tarjeta').touched)") {{validation.message}}											
+										mat-error(*ngFor='let validation of tarteja_mensajes_errores .mes')
+											mat-error.error-message(*ngIf="tarjetaForm.get('mes').hasError(validation.type) && (tarjetaForm.get('mes').dirty || tarjetaForm.get('mes').touched)") {{validation.message}}											
+										mat-error(*ngFor='let validation of tarteja_mensajes_errores .ano')
+											mat-error.error-message(*ngIf="tarjetaForm.get('ano').hasError(validation.type) && (tarjetaForm.get('ano').dirty || tarjetaForm.get('ano').touched)") {{validation.message}}											
+										mat-error(*ngFor='let validation of tarteja_mensajes_errores .codigo')
+											mat-error.error-message(*ngIf="tarjetaForm.get('codigo').hasError(validation.type) && (tarjetaForm.get('codigo').dirty || tarjetaForm.get('codigo').touched)") {{validation.message}}											
+								.botones
+									.fondito
+										button(mat-button type="submit" color="primary")
+											span Pagar
+										.svg1
+											include ../partials/manchita.pug
+										.svg2
+											include ../partials/manchita.pug
+				.svg1
+					include ../partials/manchita.pug
+				.svg2
+					include ../partials/manchita.pug
+		.fila3
+			.politicas
+				.open
+					p Transacciones realizadas via: 
+					a(href="https://www.openpay.mx/", target="_blank", rel="Openpay")
+						img(src="assets/images/iconos-pagos/openpay.png")
+				.encryp
+					img(src="assets/images/iconos-pagos/security.png")
+					p Tus pagos se realizan de forma segura con encriptación de 256bits

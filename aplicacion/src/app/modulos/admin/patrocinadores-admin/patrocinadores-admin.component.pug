@@ -1,0 +1,18 @@
+.patrocinadores
+    .patrocinadores-content
+        mat-card.busqueda
+            form.filtro
+                .autocomplete
+                    autocomplete([array]="patrocinadores" [label]="'Buscar patrocinador'" (selectItem)="ver($event.id)")
+                button.buscar(mat-button (click)="agregar()")
+                    mat-icon add_circle
+        mat-card.peliculass
+            mat-toolbar(color="primary").titulo
+                mat-toolbar-row Lista de patrocinadores
+            mat-list
+                mat-list-item( *ngFor="let patrocinador of patrocinadores").carrerita
+                    h2((click)="ver(patrocinador.$id)") {{patrocinador.$nombre}}
+                    span.spaciador
+                    button.right(mat-button (click)="eliminarCarrera(patrocinador)")
+                        mat-icon delete
+                    mat-divider

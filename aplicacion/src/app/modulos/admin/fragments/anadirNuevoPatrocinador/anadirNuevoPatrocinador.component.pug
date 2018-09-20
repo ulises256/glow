@@ -1,0 +1,32 @@
+form( class="contenedor" [formGroup]="form" (ngSubmit)="submit(form)" novalidate)
+    mat-dialog-content.contenido
+        mat-form-field(class="input-layout")
+            input(matInput formControlName="nombre" placeholder="Nombre del patrocinadior" required)
+        mat-form-field(class="input-layout")
+            mat-select(formControlName="tipo" placeholder="Tipo de patrocinador" required)
+                mat-option( [value]="'Oro'") Oro
+                mat-option( [value]="'Platino'") Platino
+                mat-option( [value]="'Diamante'") Diamante
+                mat-option( [value]="'Diamente 2'") Diamante 2               
+        mat-form-field(class="input-layout")
+            mat-select(formControlName="tipoApoyo" placeholder="Selecione el tipo de apoyo" required)
+                mat-option( [value]="'Efectivo'") Efectivo
+                mat-option( [value]="'Especie'") Especie
+        mat-form-field(class="input-layout")
+            mat-select(formControlName="puntoVenta" placeholder="Tiene puntos de ventas?" required)
+                mat-option( [value]="'Si'") Si
+                mat-option( [value]="'No'") No
+        mat-form-field(class="input-layout")
+            input(matInput formControlName="sitioweb" placeholder="Sitio web del patrocinador")                                            
+        .logo
+            button(mat-icon-button type="button" (click)="fileInput.click()" matTooltip="Subir Imagen")
+                mat-icon add_a_photo
+            input(#fileInput type="file" accept="*"  formControlName="logo" (change)="handleFileSelect($event)" style="display:none;" )
+            .img
+                img([src]="domSanitizer.bypassSecurityTrustUrl(data.imagen?.imagen)")
+            mat-error(*ngIf="!this.data.imagen") Requiere una imagen
+    mat-dialog-actions.botones
+        button(mat-button type="button" (click)="cancelar()") Cancelar
+            mat-icon cancel
+        button(mat-button type="submit") Ok
+            mat-icon done

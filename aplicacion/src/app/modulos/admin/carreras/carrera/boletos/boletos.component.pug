@@ -1,0 +1,16 @@
+.boletos
+    .boletos-content
+        mat-toolbar(color="primary").titulo
+            mat-toolbar-row Boletos de esta carrera
+                button(mat-icon-button (click)="anadirBoleto()" matTooltip="Añadir boleto").nuevo
+                    mat-icon add
+        mat-list(#listBoletos)
+            mat-list-item( *ngFor="let boletito of boletitos").patros
+                h4 ${{boletito.$precioini}} | ${{boletito.$preciofin}} | {{boletito.$fechaini | date}} | {{boletito.$fechafin | date}} | {{boletito.$tipo}} |
+                span.spaciador
+                button.right(mat-icon-button (click)="eliminarBoleto(boletito)" )
+                    mat-icon delete
+                button.right(mat-icon-button (click)="anadirBoleto(boletito)" )
+                    mat-icon edit
+                mat-slide-toggle((change)="checar($event, boletito.$id)" [checked]="boletito.getActivo()")
+                mat-divider

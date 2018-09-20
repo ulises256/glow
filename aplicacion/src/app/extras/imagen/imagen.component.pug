@@ -1,0 +1,5 @@
+//- ngx-loading([show]="!imagen" [config]="{ backdropBorderRadius: '12px' }")
+.login(*ngIf="!imagen")
+    mat-spinner([mode]="indeterminate" color="primary")
+.img(*ngIf="imagen")
+    img(*ngIf="imagen" src="{{imagen.imagen}}" (click)="eventClick(imagen)")

@@ -1,0 +1,21 @@
+form( class="contenedor" [formGroup]="form" (ngSubmit)="submit(form)" novalidate)
+	mat-dialog-content.contenido
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="nombre" placeholder="Nombre de la carrea" required)
+		mat-form-field(class="input-layout")
+			textarea(matInput  formControlName="descripcion" placeholder="Descripciòn" rows="5" required)
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="fecha" [matDatepicker]="picker" placeholder="Seleciona fecha de inicio")
+			mat-datepicker-toggle(matSuffix [for]="picker")
+			mat-datepicker(#picker startView="year" [startAt]="fechaactual")
+		mat-form-field(class="input-layout")
+			mat-select(formControlName="status" placeholder="Selecione el estatus" required)
+				mat-option( [value]="'proximo'") Proxima Carrera
+				mat-option( [value]="'realizado'") Carrera Realizada
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="videoUrl" placeholder="Enlace del video" )
+	mat-dialog-actions.botones
+		button(mat-button type="button" (click)="cancelar()") Cancelar
+			mat-icon cancel
+		button(mat-button type="submit") Ok
+			mat-icon done

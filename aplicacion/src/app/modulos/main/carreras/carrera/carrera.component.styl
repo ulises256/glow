@@ -1,0 +1,109 @@
+rosa = #ff3377
+naranja = #ef6100
+verde = #00c900
+azul = #1cccf4
+
+@import '../../../../../default.styl'
+
+.carrera
+    display flex
+    justify-content center
+    width 100%
+    min-height 100%
+    color white
+    .carrera-content
+        display flex
+        width 90%
+        height 100%
+        max-height 100%
+        flex-direction column
+        color white
+        .arriba, .abajo, .izquierda, .car, .derecha, .proximas
+            display flex
+        .arriba
+            height 90%
+            .izquierda, .derecha
+                flex 3
+            .centro
+                flex 2
+                @media normal
+                    flex 0
+
+            .izquierda, .derecha
+                flex-direction column
+            .izquierda
+                @media normal
+                    margin-right 20px
+                .titulo, .registro
+                    margin 10px
+                    align-items baseline
+                    h1
+                        &.titulo
+                            font-family Bebas
+                            font-size 50px
+                    a
+                        &.reg
+                            font-family Gloss_And_Bloom
+                            font-size 25px
+                            cursor pointer
+                            color verde
+                .mapita
+                    height 300px
+                    margin 20px 0
+                    align-items center
+                .cositas
+                    display flex
+                    justify-content center
+                    align-content center
+                .patrocinadores
+                    width 100%
+                    margin 20px 0
+                    display flex
+                    align-items center
+                    justify-content center
+                    .patro
+                        flex 1
+                        height 100%
+                        max-width 100%
+            .derecha
+                @media normal
+                    margin-left 20px
+                .galeria
+                    width 100%
+                    max-width 100%
+                    height 350px
+                    position relative
+                    margin-bottom 20px
+                    .carousel
+                        width 100%
+                        height 450px
+                        max-height 100%
+                        max-width 100%
+                        position absolute
+                        .slide
+                            overflow hidden
+                            height 350px
+                            imagen
+                                display flex
+                                justify-content: center
+                            .img
+                                width 50px !important
+                                height 50px !important
+                h2
+                    margin 0
+                    margin-top 38px
+                    font-family Bebas
+                    font-size 28px
+                    color white
+                .gale
+                    color white
+                proximas
+                    display flex
+                    flex 1
+                    justify-content center
+                    align-items center
+        .abajo
+            height 25%
+            align-items center
+            justify-content center
+            flex-direction column

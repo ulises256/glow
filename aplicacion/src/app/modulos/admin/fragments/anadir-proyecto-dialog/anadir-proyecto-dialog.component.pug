@@ -1,0 +1,25 @@
+form( class="contenedor" [formGroup]="form" (ngSubmit)="submit(form)" novalidate)
+	mat-dialog-content.contenido
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="nombre" placeholder="Nombre del proyecto" required)
+		mat-error(*ngIf="form.controls.nombre.invalid") Ingrese el nombre del proyecto
+		mat-form-field(class="input-layout")
+			textarea(matInput  formControlName="descripcion" placeholder="Descripciòn" rows="5" required)
+		mat-error(*ngIf="form.controls.descripcion.invalid") Ingrese una descripciòn para el proyecto
+		//- mat-form-field(class="input-layout")
+		//- 	mat-select(formControlName="area" placeholder="Area" required)
+		//- 		mat-option(*ngFor="let area of areas" [value]="area.id") {{area.nombre}}
+		//- mat-error(*ngIf="form.controls.area.invalid") Selecione el area
+		//- mat-form-field(class="input-layout")
+		//- 	mat-select(formControlName="programa" placeholder="Programa" required)
+		//- 		mat-option(*ngFor="let programa of programas" [value]="programa.id") {{programa.nombre}}
+		//- mat-error(*ngIf="form.controls.programa.invalid") Selecione el programa
+		mat-form-field(class="input-layout")
+			mat-select(formControlName="status" placeholder="Estatus" required)
+				mat-option(*ngFor="let statu of status" [value]="statu.id") {{statu.nombre}}
+		mat-error(*ngIf="form.controls.status.invalid") Selecione el status
+	mat-dialog-actions.botones
+		button(mat-button type="button" (click)="cancelar()") Cancelar
+			mat-icon cancel
+		button(mat-button type="submit") Ok
+			mat-icon done

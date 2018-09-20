@@ -1,0 +1,10 @@
+form(class="contenedor" (ngSubmit)="submit()" novalidate)
+    mat-dialog-content.contenido
+        h2(*ngIf="data")  {{data.titulo}}
+        h2(*ngIf="!(data)") Seguro de eliminar?
+        p(*ngIf="data") {{data.body}}
+    mat-dialog-actions.botones
+        button(mat-button color="warn" type="button" (click)="cancel()") Cancelar
+            mat-icon cancel
+        button(mat-button color="primary" type="submit") Aceptar
+            mat-icon done

@@ -1,0 +1,75 @@
+.fag
+    display flex
+    width 100%
+    justify-content center
+	.fag-content
+        display flex
+        width 90%
+        flex-direction column
+        position relative
+        height calc(100vh - 100px)
+        .atras-container
+            width 100%
+            display flex
+            justify-content center
+            .atras
+                width 65%
+                display flex
+                flex-direction column
+                margin-top 64px
+                align-items flex-end
+                h2
+                    font-size 104px
+                    color white
+                    text-shadow: 0px 0px 15px #ffffff
+                    margin 0px
+                    width 65%
+                    font-family Bebas
+                    font-weight 100
+                    &:first-child
+                        text-align end
+                    &:last-child
+                        text-align start
+
+        .delante
+            position absolute
+            display flex
+            flex-direction column
+            justify-content center
+            align-items center
+            height 100%
+            .medio
+                display flex
+                justify-content center
+                align-items center
+                height 100%
+                .explicacion
+                    flex 1
+                .mapa
+                    flex 2
+                    .contenedor
+                        height auto
+                        width 100%
+                        svg
+                            height auto
+                            width 100%
+                .carreras
+                    flex 1
+                    .estadito
+                        h3
+                            color #ef6100
+                            font-family Loto
+					.carreritas
+                        color gray
+                        li
+                            &:hover
+                                cursor pointer
+
+            .texto
+                color gray
+                width 100%
+                display flex
+                p
+                    font-size 16px
+                    width 45%
+                    justify-content center

@@ -1,0 +1,54 @@
+mat-toolbar(id="menu" class="mat-elevation-z8" role="header" *ngIf="!mobileQuery.matches")
+    mat-toolbar-row
+        .izquierda
+            a(mat-button [routerLink]="navLinks[0].path" [routerLinkActive]="['active']").link
+                img(src="assets/images/glowrun5klogo.png")
+        .centro
+            a(mat-button [routerLink]="navLinks[0].path" [routerLinkActive]="['active']").link {{navLinks[0].label}}
+            a(mat-button [routerLink]="navLinks[1].path" [routerLinkActive]="['active']").link {{navLinks[1].label}}
+            a(mat-button [routerLink]="navLinks[2].path" [routerLinkActive]="['active']").link {{navLinks[2].label}}
+            a(mat-button [routerLink]="navLinks[3].path" [routerLinkActive]="['active']").link {{navLinks[3].label}}
+            a(mat-button [routerLink]="navLinks[4].path" [routerLinkActive]="['active']").link {{navLinks[4].label}}
+        .derecha
+            a(mat-button [routerLink]="navLinks[5].path"  [routerLinkActive]="['active']" *ngIf="!(usuario && usuario.getId())").link {{navLinks[5].label}}
+            a(mat-button *ngIf="usuario && usuario.getId()" [mat-menu-trigger-for]="menuUser").link
+                mat-icon(*ngIf="usuario && !(usuario.getFoto())") account_circle
+                img(*ngIf="usuario && usuario.getFoto()" [src]="usuario.getFoto()", alt="foto perfil").avatar
+
+mat-toolbar(id="menu-movil" color="primary" class="mat-elevation-z8" role="header" *ngIf="mobileQuery.matches")
+    mat-toolbar-row
+        button(mat-button [mat-menu-trigger-for]="menu").menu
+            mat-icon menu
+        a(mat-button  [routerLink]="['/']" [routerLinkActive]="['active-nav']").inicio
+            img(src="favicon.ico")
+        a(mat-button [routerLink]="navLinks[5].path"  [routerLinkActive]="['active-nav']" *ngIf="!usuario").user
+            mat-icon account_circle
+        a(mat-button [mat-menu-trigger-for]="menuUser" *ngIf="usuario && usuario.getId()").user
+            mat-icon account_circle            
+
+
+mat-menu(#menu="matMenu")
+    a(mat-menu-item [routerLink]="navLinks[0].path" [routerLinkActive]="['active-nav']").link
+        mat-icon {{navLinks[1].icon}}
+        span {{navLinks[1].label}}
+    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
+        mat-icon {{navLinks[2].icon}}
+        span {{navLinks[2].label}}
+    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
+        mat-icon {{navLinks[3].icon}}
+        span {{navLinks[3].label}}
+    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
+        mat-icon {{navLinks[4].icon}}
+        span {{navLinks[4].label}}                
+
+mat-menu(#menuUser="matMenu")
+    a(mat-menu-item [routerLink]="['/user']").link
+        mat-icon account_box
+        span(*ngIf="usuario && !usuario.getNombre()") {{usuario.getCorreo()}}
+        span(*ngIf="usuario && usuario.getNombre()") {{usuario.getNombre()}}
+    button( *ngIf="usuario && usuario.getTipo()=='admin'" mat-menu-item [routerLink]="['/admin']").link
+        mat-icon edit
+        span {{usuario.getTipo()}}
+    a(mat-menu-item (click)="salir()").link
+        mat-icon exit_to_app
+        span Cerrar Sesión

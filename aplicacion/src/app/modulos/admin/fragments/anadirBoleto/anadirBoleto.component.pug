@@ -1,0 +1,23 @@
+form( class="contenedor" [formGroup]="form" (ngSubmit)="submit(form)" novalidate)
+	mat-dialog-content.contenido
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="precioini" placeholder="Precio Inicial" required)
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="preciofin" placeholder="Precio Final" required)
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="fechaini" [matDatepicker]="picker1" placeholder="Seleciona fecha de inicio")
+			mat-datepicker-toggle(matSuffix [for]="picker1")
+			mat-datepicker(#picker1 startView="year" [startAt]="fechaactual")
+		mat-form-field(class="input-layout")
+			input(matInput formControlName="fechafin" [matDatepicker]="picker2" placeholder="Seleciona fecha final")
+			mat-datepicker-toggle(matSuffix [for]="picker2")
+			mat-datepicker(#picker2 startView="year" [startAt]="fechaactual")
+		mat-form-field(class="input-layout")
+			mat-select(formControlName="tipo" placeholder="Tipo de boleto" required)
+				mat-option( value="preventa") Preventa
+				mat-option( value="normal") Normal
+	mat-dialog-actions.botones
+		button(mat-button type="button" (click)="cancelar()") Cancelar
+			mat-icon cancel
+		button(mat-button type="submit") Ok
+			mat-icon done

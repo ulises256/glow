@@ -1,0 +1,48 @@
+
+mobile = 'screen and (max-width: 768px)'
+
+.galeria
+    display flex
+    width 100%
+    justify-content center
+    aling-items center
+    height 100%
+    background-color black
+    .galeria-content
+        display flex
+        flex-direction column
+        width 100%
+        height 100%
+        h1
+            color white
+            text-align: center
+            font-family Loto
+        .carrera
+            display flex
+            flex-direction column
+            h2
+                color white
+                text-align: left
+                font-family Loto
+                margin-left 20px
+                background-color black
+            .galerias
+                display flex
+                width 100%
+                drag-scroll, imagen, .img
+                    height 326px
+                    @media mobile
+                        height 250px
+                    imagen
+                        margin-right 20px
+                        margin-left 20px
+                        
+            .linea
+                width 100%
+                height 8px
+
+
+.mat-tooltip.tooltip
+     color white
+     font-size 15px
+     font-family Loto

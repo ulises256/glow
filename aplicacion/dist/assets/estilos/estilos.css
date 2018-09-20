@@ -1,0 +1,30 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@font-face {
+  font-family: Multicolore;
+  font-weight: 400;
+  src: url("assets/fonts/Multicolore.otf");
+}
+@font-face {
+  font-family: Baloo;
+  font-weight: 400;
+  src: url("assets/fonts/Baloo-Regular.ttf");
+}
+@font-face {
+  font-family: Alte;
+  font-weight: 400;
+  src: url("assets/fonts/AlteHaasGroteskRegular.ttf");
+}
+@font-face {
+  font-family: Heavitas;
+  font-weight: 400;
+  src: url("assets/fonts/Heavitas.ttf");
+}
+h1 {
+  font-family: Multicolore !important;
+}
+h2 {
+  font-family: Heavitas !important;
+}
+p {
+  color: #00f;
+}

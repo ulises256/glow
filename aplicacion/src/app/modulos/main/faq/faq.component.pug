@@ -1,0 +1,23 @@
+.fag
+	.fag-content
+		.atras-container
+			.atras
+				h2 PRESENCIA
+				h2 NACIONAL
+		.delante
+			.medio
+				.explicacion
+					explicacion
+				.mapa
+					include ./mapa.component.pug
+				.carreras
+					.estadito(*ngIf="estado && estado.$tiene_carrera == 'Si'" )
+						h3 {{estado.$estado}}
+					.carreritas(*ngIf="estado && estado.$tiene_carrera == 'Si'")
+						ul(*ngIf="!cargando")
+							li(*ngFor="let carrera of carrerasEnElEstado" (click)="verCarrera(carrera.$id)") {{carrera.$nombre}}
+					mat-spinner(style="width=24px" *ngIf="cargando")
+			.texto
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+			

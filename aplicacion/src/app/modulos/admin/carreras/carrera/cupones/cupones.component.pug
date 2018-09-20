@@ -1,0 +1,15 @@
+.boletos
+    .boletos-content
+        mat-toolbar(color="primary").titulo
+            mat-toolbar-row Cupones de esta carrera
+                button(mat-icon-button (click)="anadirBoleto()" matTooltip="Añadir Cupon").nuevo
+                    mat-icon add
+        mat-list(#listBoletos)
+            mat-list-item( *ngFor="let boletito of cupones").patros
+                h4 {{boletito.codigo}} | %{{boletito.precio}} | {{boletito.fechaini | date}} | {{boletito.fechafin | date}} | {{boletito.status}} |
+                span.spaciador
+                button.right(mat-icon-button (click)="eliminarBoleto(boletito)" )
+                    mat-icon delete
+                button.right(mat-icon-button (click)="anadirBoleto(boletito)" )
+                    mat-icon edit
+                mat-divider

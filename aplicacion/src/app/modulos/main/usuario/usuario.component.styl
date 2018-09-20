@@ -1,0 +1,91 @@
+.usuario
+    display flex
+    width 100%
+    height 100%
+    justify-content center
+    align-items center
+    background-color black
+    .usuario-content
+        width 75%
+        height 100%
+        display flex
+        flex-direction column
+        mat-card
+            width 100%
+            display flex
+            margin-top 50px
+            flex-direction column
+            padding 0px
+            .info
+                display flex
+                padding 5px
+                section
+                    display flex
+                    justify-content center
+                    align-items center
+                    &.encabezado
+                        display flex
+
+                        flex-direction column
+                        justify-content center
+                        align-items center
+                        .foto
+                            width 48px
+                            height 48px
+                            vertical-align middle
+                            border-radius 50%
+                            img
+                                max-width 100%
+                                max-height 100%
+                        .nombre
+                            margin 0px 10px 0px 10px
+                    &.generales
+                        width 100%
+                        display flex
+                        flex-direction column
+                        justify-content center
+                        .nombre2, .correo , .edad, .genero, .ciudad, .entero, .gustos
+                            display flex
+                            align-items center
+                            justify-content center
+                            .mat-form-field
+                                width 100%
+
+                    &.datos
+                        align-items center
+                        .nombre2, .correo , .edad, .genero
+                            flex-direction row
+                            width 50%
+                    &.generales
+                         .ciudad, .entero, .gustos
+                            flex-direction column
+                            width 100%
+
+            .inputs
+                display flex
+                justify-content center
+                width 100%
+                mat-form-field
+                    width 100%
+            .preguntas
+                padding 5px
+
+        .ordenes
+            margin 10px 10px 10px 10px
+            h2
+                font-family Loto
+                color gray
+#qrcode
+    z-index 100
+    visibility hidden
+    .impresion
+        width 612px
+        height 792px
+        position relative
+        #diseno
+            position absolute
+            .imagen
+                width 800px
+                height 1000px
+        img
+            position absolute

@@ -1,0 +1,18 @@
+.carreras
+    .carreras-content
+        mat-card.busqueda
+            form.filtro
+                .autocomplete
+                    autocomplete([array]="carreras" [label]="'Buscar carrera'" (selectItem)="verCarrera($event.id)")
+                button.buscar(mat-button (click)="agregarCarrera()")
+                    mat-icon add_circle
+        mat-card.peliculass
+            mat-toolbar(color="primary").titulo
+                mat-toolbar-row Lista de Carreras
+            mat-list
+                mat-list-item( *ngFor="let carrera of carreras").carrerita
+                    h2((click)="verCarrera(carrera.$id)") {{carrera.$nombre}}
+                    span.spaciador
+                    button.right(mat-button (click)="eliminarCarrera(carrera)")
+                        mat-icon delete
+                    mat-divider

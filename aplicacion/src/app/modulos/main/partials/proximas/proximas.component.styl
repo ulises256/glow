@@ -1,0 +1,83 @@
+
+@import '../../../../../default.styl'
+
+transition(duracion, delay)
+    -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    -webkit-transition-delay delay ease-in-out
+    transition-delay delay ease-in-out
+
+.proximas
+    display flex
+    height 100%
+    width 100%
+.proxima
+    display flex
+    justify-content center
+    align-items center
+    transition(500ms, 0)
+    flex 1
+    height 100%
+    width 100%
+    &:hover
+        cursor pointer
+        transform scale(1.2)
+    .proxima-content
+        flex 1
+        position relative
+        display flex
+        justify-content center
+        align-items center
+        width 100%
+        height 100%
+        mancha
+            width 100%
+            height 100%
+        .content
+            position absolute
+            display flex
+            justify-content center
+            align-items center
+            flex-direction column
+            width 90%
+            height 80%
+            z-index: 2;
+            .fecha
+                width 90%
+                display flex
+                justify-content flex-start
+                flex-direction column
+                p
+                    font-family Loto
+                    margin 0px
+                    &.dia
+                        font-size 30px
+                        font-weight 300
+                    &.mes
+                        font-size 14px
+                        font-weight 300
+                    &.ano
+                        font-size 12px
+                        font-weight 300
+            .nombre, .pie
+                width 90%
+                display flex
+                justify-content center
+                align-items center
+            .nombre
+                margin 12px 0
+                h2
+                    font-family Bebas
+                    margin 0px
+                    font-size 40px
+                    @media (min-width: 1366px) and (max-height : 768px)
+                            font-size 17px                         
+                    @media normal
+                        font-size 27px
+            .pie
+                p
+                    font-family Loto
+                    margin 2px 0
+                    font-size 18px
+                    @media normal
+                        font-size 15px

@@ -1,0 +1,40 @@
+.home
+    .home-content
+        .portada
+            .background
+                videojs(*ngIf="url" [url]="url" [autoplay]="true" [mute]="true" [loop]="true" [controls]="false")
+            .contador
+                .titulo
+                    h1 {{carrerasProximas[0]?.$nombre}}
+                .tiempo(*ngIf="time1$ | async as time1")
+                    .dias
+                        h3 {{time1.days}}
+                        h3 DIAS
+                    .horas
+                        h3 {{time1.hours}}
+                        h3 HORAS 
+                    .minutos
+                        h3 {{time1.minutes}} 
+                        h3 MINUTOS 
+                    .segundos
+                        h3 {{time1.seconds}}
+                        h3 SEGUNDOS
+                .boton
+                    a(mat-raised-button color="primary" id="btn-comprar" (click)="irAComprar(carrerasProximas[0]?.$id)") ADQUIRIR BOLETO
+        .linea
+        .piesito
+            .piesito-content
+                .galeria((click)="irGaleria()")
+                    .titulo-content
+                        .titu
+                            h2 GA
+                            h2 LE
+                            h2 RIA
+                        include ../partials/manchita.pug
+                    .images
+                        .imagen(style="background-image : url(assets/images/fondito.jpg)")
+                .tit
+                    h2 Proxima
+                    h2 Carreras
+                .proximas-container
+                    proximas([carrerasProximas]="carrerasProximas")

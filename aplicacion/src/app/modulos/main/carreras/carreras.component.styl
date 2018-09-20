@@ -1,0 +1,143 @@
+verde = #45c900
+rosa = #f53277
+azul = #40ccf4
+
+@import '../../../../default.styl'
+
+transition(duracion, delay)
+    -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    -webkit-transition-delay delay ease-in-out
+    transition-delay delay ease-in-out
+
+.carreras
+    display flex
+    justify-content center
+    width 100%
+    height calc(100vh - 80px)
+    max-height 90vh
+    .carreras-content
+        display flex
+        width 90%
+        margin-top 20px
+        max-height 100%
+        flex-direction column
+        justify-content center
+        align-items center
+        .arriba
+            .flecha
+                opacity 0
+        .arriba, .abajo
+            display flex
+            width 100%
+            max-height 100%
+            height: 100%;
+            align-items: center;            
+            .title
+                height 100%
+                display flex
+                flex 1
+                flex-direction column
+                width 25%
+                h1
+                    height  0px
+                    font-size 62px
+                    font-family Loto
+                    color white
+            .carreritas-container
+                position relative
+                width 85%
+                .carreritas
+                    display flex
+                    align-items center
+                    height 300px                   
+                    .flecha-container
+                        height 100%
+                        display flex
+                        align-items center
+                        mat-icon
+                            color rosa
+                    .carrera-content
+                        display flex
+                        justify-content center
+                        align-items start
+                        position relative
+                        height 100%
+                        width 100%
+                        transition(500ms, 0)
+                        &:hover
+                            cursor pointer
+                            transform rotate(1deg) scale(1.1)                         
+                        .carrera
+                            z-index 2
+                            height 75%
+                            width 75%
+                            margin 10px
+                            .imagen-container
+                                width 100%
+                                height 200px
+                                background-position center
+                                background-size cover
+                            .pie
+                                width 100%
+                                height: 100px;
+                                display flex
+                                align-items center
+                                justify-content center
+                                .info
+                                    z-index 2
+                                    width 100%
+                                    height 80px
+                                    display flex
+                                    flex-direction row
+                                    justify-content center
+                                    align-items center
+                                    padding 0 10px
+                                    color white
+                                    .fecha
+                                        font-size 11px
+                                        display flex
+                                        flex-direction column
+                                        flex 1
+                                        p
+                                            font-family Loto
+                                            margin 2px
+                                            font-weight 300
+                                            &.dia
+                                                font-size 35px
+                                                @media normal 
+                                                    font-size 28px
+                                            &.mes
+                                                font-size 16px
+                                                @media normal 
+                                                    font-size 12px                                                
+                                            &.ano
+                                                font-size 10px
+                                    .nombre
+                                        flex 3
+                                        display flex
+                                        flex-direction column
+                                        justify-content center
+                                        align-items center
+                                        p
+                                            margin 0px
+                                        h2
+                                            
+                                            margin 0px
+                                            font-size 30px
+                                            text-align center
+                                            font-family Gloss_And_Bloom
+                                            @media normal 
+                                                font-size 20px
+                        mancha-statica
+                            width 100%
+                            position absolute
+                            &.mancha1
+                                @media normal 
+                                        transform: translate(109px, 247px) scale(0.3);
+                                transform: translate(148px, 199px) scale(0.3);
+                            &.mancha2
+                                @media normal 
+                                        transform: translate(-110px, 228px) scale(0.3);
+                                transform: translate(-138px, 211px) scale(0.3);
+

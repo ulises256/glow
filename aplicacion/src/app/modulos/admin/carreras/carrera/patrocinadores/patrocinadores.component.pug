@@ -1,0 +1,24 @@
+.patrocinadores
+	.patrocinadores-content
+		.header
+			mat-form-field.busqueda
+				input(matInput placeholder="Buscar patrocinador" aria-label="proyecto" [matAutocomplete]="auto" [formControl]="filtroCtrl")
+				mat-autocomplete(#auto='matAutocomplete')
+					mat-option(*ngFor='let item of patrocinadores | async' (click)="agregarPatrocinador(item)")
+						imagen(class="example-option-img" [id]="item?.imagen?.getId()")
+						span {{ item.$nombre }}
+						button(mat-icon-button (click)="eliminarPatrocinador(item)" matTooltip="Eliminar ").nuevo
+							mat-icon delete	
+			button(mat-icon-button (click)="anadir()" matTooltip="Añadir nuevo patrocinador").nuevo
+				mat-icon add
+		.boder
+			mat-toolbar(color="primary").titulo
+				mat-toolbar-row Patrocinadores de esta carrera
+			mat-list
+				mat-list-item( *ngFor="let patro of ptcndCarrera").patros
+					imagen(mat-list-icon [id]="patro?.imagen?.getId()")
+					h4 {{patro.$nombre}}
+					span.spaciador
+					button.right(mat-button (click)="quitarPatrocinador(patro)" )
+						mat-icon delete
+					mat-divider

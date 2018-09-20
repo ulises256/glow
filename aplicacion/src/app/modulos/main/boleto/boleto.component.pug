@@ -1,0 +1,55 @@
+.boleto
+	.boleto-content
+		.fila1
+			.contador(*ngIf="time1$")
+				.tiempo(*ngIf="time1$ | async as time1")
+					p El precio elevará su costo en:
+					h3 {{time1.days}} dias {{time1.hours}} hrs
+				include ../partials/manchita.pug
+		.fila2
+			.title
+				h1 COMPRAR
+				h1 BOLETOS
+			.cuadrado
+				.fondo-cuadro
+					.info
+						.fecha
+							p.dia {{carrera?.$fechaini | date : 'dd'}}
+							p.mes {{carrera?.$fechaini | date : 'MMMM'}}
+							p.nombre {{carrera?.$nombre}}
+						.precio
+							.ahora
+								p.promocion Promocion: 
+								h2 {{actual?.$precioini | currency}}
+								p.mxn mxn
+							.despues
+								p.des Precio real:
+								p.pre {{proximo?.$precioini | currency}}
+								p.mxn mxn
+					.productos
+						label(for="cantidad") Cantidad:
+						.inputs
+							input(type="number" id="cantidad" placeholder="cantidad" (change)="cambiarPrecio($event)"  min="1" value="1" autocomplete="off" required)
+							input(type="text" id="cupon" placeholder="Codigo cupon de esta carrera" (change)="checarCupon($event)"  autocomplete="off" required)
+							mat-error(*ngIf="!cuponValido").error Código no valido o expirado
+						p.total Precio a pagar: {{precioCompra | currency}} *incluye costo de servicio
+						.aceptar
+							.uno
+								input(type="checkbox" [(ngModel)]="checket.condiciones")
+								a(href="https://www.glowrun5k.com.mx/condiciones" target="_blank") Acepto los terminos y condiciones
+							.uno
+								input(type="checkbox" [(ngModel)]="checket.privacidad")
+								a(href="https://www.glowrun5k.com.mx/privacidad" target="_blank") Acepto las políticas de privacidad
+						button(mat-button (click)="irComprar()") Confirmar
+				.svg1
+					include ../partials/manchita.pug
+				.svg2
+					include ../partials/manchita.pug
+		.fila3
+			.politicas
+				p "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+		.fila4
+			.titulo-proximos
+				h3 PROXIMAS CARRERAS
+			.carreras-proximas
+				h3(*ngFor="let carrera of carrerasProximas | slice:1;" (click)="verCarrera(carrera.$id)" [style.color]="paleta[1]") {{carrera?.$nombre}}

@@ -1,0 +1,8 @@
+
+input(matInput *ngIf="showFileNameInput" id="uploadFile"  placeholder="Choose File" [(ngModel)]="selectedFileName" disabled="disabled")
+button(mat-icon-button (click)="fileInput.click()" matTooltip="{{description}}" *ngIf="typeIcon")
+    mat-icon(class="tool-bar-icon") {{iconButton}}
+    input(#fileInput type="file" accept="*"  (change)="changeListener($event)" style="display:none;" )
+button(mat-fab (click)="fileInput.click()" matTooltip="{{description}}"  *ngIf="!typeIcon")
+    mat-icon(class="tool-bar-icon") {{iconButton}}
+    input(#fileInput type="file" accept="*"  (change)="changeListener($event)" style="display:none;" )

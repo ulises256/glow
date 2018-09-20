@@ -1,0 +1,17 @@
+.galeria
+    .galeria-content
+        .titulo
+            h1 Galeria de la carrera
+        .images
+            .file
+                .dropi
+                    dropify([(ngModel)]="newimagen.imagen" (remove)="newimagen.setImagen($event)")
+                .botones                                      
+                    button(mat-button matTooltip="Guardar" (click)="guardarImagen(newimagen)" [ngStyle]="{'background-color':'green'}")
+                        mat-icon save
+            .grid
+                mat-grid-list(cols="4" rowHeight="1:1" gutterSize="25px")
+                    mat-grid-tile( class="image_wrapper" *ngFor="let image of imagenes" )
+                        imagen([id]="image.getId()" )
+                        button(mat-icon-button class="remove" color="warn" (click)="eliminarImagen(image)" matTooltip="Eliminar Imagen")
+                            mat-icon cancel

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>D3 Examples</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src="js/d3.js"></script>
+	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+	<script>
+	var blow_counter=1;
+	var color_array;
+	var anim_interval;
+	var rehilete_piece;
+	$(document).ready(function() {
+		color_array = ["#75d848", "#faec00", "#ff6d14", "#ff0000", "#700087", "#0b4994", "#009ce3"];
+		path_array = [
+		"m 317.04656,566.66286 c 21.91972,7.62561 71.91936,81.55793 75.61566,96.1899 -0.44271,18.14562 -67.63401,85.30792 -82.37952,89.50942 -11.95604,-6.7501 -16.0641,-175.24412 6.76386,-185.69932 z",
+		"m 460.13818,641.52408 c 7.70806,21.89086 -18.90755,107.08219 -28.04088,119.09632 -14.4612,10.96965 -108.86549,0.32651 -121.34536,-8.58054 -2.17906,-13.5559 126.97734,-121.84134 149.38624,-110.51578 z",
+		"m 490.84921,800.06823 c -12.30613,19.67697 -95.50112,51.99642 -110.58863,52.34864 -17.59349,-4.46413 -68.1445,-84.9007 -68.96405,-100.21119 9.23829,-10.157 174.43196,23.28196 179.55268,47.86255 z",
+		"m 386.06079,922.94541 c -23.05642,2.65052 -100.20273,-42.23155 -109.88674,-53.80639 -7.48164,-16.53736 23.87475,-106.21581 35.33246,-116.4042 13.70118,0.88795 90.57656,150.87891 74.55428,170.21059 z",
+		"m 224.65624,917.65534 c -16.45015,-16.3712 -29.47308,-104.66818 -26.4636,-119.45669 8.26228,-16.16149 97.92141,-47.57309 113.03117,-44.96971 7.85,11.26447 -61.46365,164.89626 -86.56757,164.4264 z",
+		"m 128.13873,788.18032 c 2.53956,-23.0689 63.4435,-88.31202 76.88097,-95.18161 17.78647,-3.61947 98.25416,46.88201 105.64154,60.31737 -3.91055,13.16124 -167.23485,54.78194 -182.52251,34.86424 z",
+		"m 169.16532,631.9874 c 19.61753,-12.40066 108.60068,-5.47577 122.3506,0.74489 13.92124,11.64724 24.6225,106.04497 18.72638,120.19835 -12.72729,5.15041 -147.11392,-96.57148 -141.07698,-120.94324 z"
+		];
+		//color_int = setInterval(change_bg,2000);
+		
+		rehilete_piece = d3.select("#chart")
+	  	.append("svg:svg")
+	    .attr("width", "600px")
+			.attr("style", "background-color: #ffffff")
+	    .attr("height", "600px");
+	
+	var defs = rehilete_piece.append("svg:defs");
+	
+	/*
+	var gradient = defs.append("svg:linearGradient")
+			    .attr("id", "my_gradient")
+			    .attr("x1", "0%")
+			    .attr("y1", "100%")
+			    .attr("x2", "0%")
+			    .attr("y2", "0%")
+			    .attr("spreadMethod", "pad");
+*/
+					var gradient = defs.append("svg:radialGradient")
+							    .attr("id", "my_gradient")
+							    .attr("cx", "50%")
+							    .attr("cy", "80%")
+							    .attr("r", "100%")
+							    .attr("gradientUnits", "userSpaceOnUse");
+gradient.append("svg:stop")
+  .attr("offset", "0")
+  .attr("stop-color", "#5EABD4");
+			
+		gradient.append("svg:stop")
+		    .attr("offset", ".5")
+		    .attr("stop-color", "#26698D");
+		
+				rehilete_piece.append("svg:rect")
+				.attr("x","0")
+				.attr("y", "0")
+				.attr("height", "600")
+				.attr("width", "600")
+				.attr("stroke", "#aaa")
+				.attr("fill","#fff");
+		
+		
+	
+	
+		var g0 = rehilete_piece.append("svg:g").attr("id","anim");
+		
+				var g1 =	g0.append("svg:g")
+					.attr("transform", "translate(-10,-452.36218)");
+						g0.attr("fill","url(#my_gradient)");
+		
+			// Head of triangle
+			for (var i=0; i<path_array.length; i++) {
+				g1.append("svg:path")
+				.attr("id","my_path")
+				.attr("d", path_array[i])
+				.attr("style", "fill:" + color_array[i] + ";stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:.6");	
+			}
+			
+			rehilete_piece.append("svg:circle")
+				.attr("cx", "300")
+				.attr("cy", "300")
+				.attr("r", "10")
+				.attr("style", "fill:#d98840;stroke:#623917;stroke-width:1;opacity:.95");
+						
+			change_bg(1,1000);
+			anim_interval = setInterval(change_bg,500);
+			
+	});
+	
+	function change_bg() {
+		blow_counter++;
+		d3.select("#anim").transition().duration(500).ease("sin").attr("transform", function(d,i,a) {
+			return "rotate (" +	(45*parseInt(blow_counter)) + ", 300,300)";
+		});
+	}
+	
+	
+	</script>
+</head>
+<body style="background-color: #cccccc">
+	<input type="button" value="Back" onclick="change_bg(++blow_counter,1000)">
+	<input type="button" value="Forward" onclick="change_bg((++blow_counter*2),2000)">
+	<div id="chart" style="width:600px; height:500px; display:block"></div>
+
+</body>
+</html>

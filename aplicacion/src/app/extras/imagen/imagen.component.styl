@@ -1,0 +1,53 @@
+transition(duracion, delay)
+    -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    -webkit-transition-delay delay ease-in-out
+    transition-delay delay ease-in-out
+
+animation(animation, duration = 1s, delay = 0s)
+    -webkit-animation animation duration cubic-bezier(0.445, 0.050, 0.550, 0.950) !important
+    animation animation duration cubic-bezier(0.445, 0.050, 0.550, 0.950) !important
+    -webkit-transition all duration ease-in-out !important
+    -moz-transition all duration ease-in-out !important
+    -o-transition all duration ease-in-out !important
+    transition all duration ease-in-out !important
+    -webkit-transition-delay delay ease-in-out !important
+    transition-delay delay ease-in-out !important
+
+
+// .puntos
+//     height 100%
+//     width 100%
+//     position absolute
+//     background-image url(/assets/images/point.png)
+.login
+    background-color transparent
+    display flex
+    justify-content center
+    align-items center
+    width 100%
+    height 100%
+    position relative
+    .mat-spinner
+        width 100% !important
+        height 100% !important
+        position absolute
+        svg
+            width 100% !important
+            height 100% !important
+
+.img
+    height 100%
+    width 100%
+    background-size cover
+    background-repeat no-repeat
+    background-position center
+    img
+        max-width 100%
+        max-height 100%
+        overflow hidden
+        transition(500ms, 0)
+        &:hover
+            cursor pointer
+            transform scale(1.2)
+            transition(500ms, 0) 

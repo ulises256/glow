@@ -1,0 +1,90 @@
+.usuario
+	.usuario-content(*ngIf="usuario")
+		mat-card
+			.info
+				section.encabezado
+					.foto
+						img([src]="usuario.getFoto()" *ngIf="usuario.getFoto()")
+					.nombre
+						//- h2(*ngIf="!usuario.getNombre()") {{usuario.getCorreo()}}
+						//- h2(*ngIf="usuario.getNombre()") {{usuario.getNombre()}}
+						button(mat-menu-item type="submit" (click)="editar(usuarioForm)" matTooltip="{{editable.tooltip}}")
+							mat-icon {{editable.icon}}
+							span {{editable.tooltip}}
+						
+						
+				section.generales([formGroup]="usuarioForm")
+					.inputs
+						mat-form-field(class="input-layout")
+							input(matInput formControlName="nombre"  (ngModelChange)="usuario.setNombre($event)"  placeholder="Nombre" autocomplete="off"  required)
+				
+						
+						mat-form-field(class="input-layout" )
+							input(matInput formControlName="correo"  (ngModelChange)="usuario.setCorreo($event)"  placeholder="correo" autocomplete="off"  required)
+					
+						mat-form-field(class="input-layout")
+							input(matInput formControlName="edad"  (ngModelChange)="usuario.setEdad($event)"  placeholder="edad" autocomplete="off"  required)
+					
+					.inputs
+						mat-form-field(class="input-layout")
+							mat-select( name="status" formControlName="sexo" (change)="usuario.setSexo($event)" placeholder="genero" required)
+								mat-option( [value]="'male'") Hombre
+								mat-option( [value]="'female'") Mujer							
+						
+						mat-form-field.input-layout
+							mat-select(placeholder="Seleciona estado" [disabled]="editable.disiabled" required )
+								mat-option --
+								mat-option(*ngFor="let estado of estados" [value]="estado" (click)="selecionarMunicipio(estado)") {{estado.$estado}}
+						mat-form-field.input-layout
+							mat-select(placeholder="Seleciona ciudad" formControlName="ciudad" (change)="usuario.setCiudad($event.$municipio)"  [disabled]="editable.disiabled" required)
+								mat-option --
+								mat-option(*ngFor="let ciudad of municipios | async" [value]="ciudad") {{ciudad.$municipio}}
+			.preguntas
+				.inputs
+					mat-form-field(class="input-layout")
+						textarea(matInput formControlName="entero" rows="3" placeholder="¿Como te enteraste de la carrera?"  (ngModelChange)="usuario.setEntero($event)"  autocomplete="off" place required)
+					
+					mat-form-field(class="input-layout")
+						textarea(matInput formControlName="gustos" rows="3" placeholder="¿Nos contarias tus gustos?"   (ngModelChange)="usuario.setGustos($event)"  autocomplete="off"  required)
+				
+		.ordenes(*ngIf="dataSourceOrdenes")
+			h2 Tus boletos
+			.mat-elevation-z8
+				mat-table(#table2 [dataSource]="dataSourceOrdenes" matSort)
+					//- ng-container(matColumnDef="{{column.id}}" *ngFor="let column of columnsOrdenes | slice:0:6")
+					//- 	mat-header-cell(*matHeaderCellDef mat-sort-header) {{column.value}}
+					//- 	mat-cell(*matCellDef="let element") {{element[column.id]}}
+					ng-container(matColumnDef="{{columnsOrdenes[0].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[0].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[0].id]}}						
+					ng-container(matColumnDef="{{columnsOrdenes[1].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[1].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[1].id] | currency}}	
+					ng-container(matColumnDef="{{columnsOrdenes[2].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[2].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[2].id]}}	
+					ng-container(matColumnDef="{{columnsOrdenes[3].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[3].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[3].id]}}	
+					ng-container(matColumnDef="{{columnsOrdenes[4].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[4].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[4].id]}}	
+					ng-container(matColumnDef="{{columnsOrdenes[5].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[5].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[5].id]}}																															
+					ng-container(matColumnDef="{{columnsOrdenes[6].id}}" )
+						mat-header-cell(*matHeaderCellDef mat-sort-header) {{columnsOrdenes[6].value}}
+						mat-cell(*matCellDef="let element") {{element[columnsOrdenes[6].id]}}
+							button(*ngIf="element.$status=='completed'" mat-icon-button (click)="imprimirBoleto(element)" matTooltip="Imprimir boleto")
+								mat-icon print
+							button(*ngIf="element.$status!='completed'" (click)="irAPagar(element)"  mat-icon-button matTooltip="Terminar pago")
+								mat-icon attach_money
+							button(*ngIf="element.$status!='completed'"  (click)="eliminarOrden(element)" mat-icon-button matTooltip="Quitar")
+								mat-icon delete									
+
+					mat-header-row(*matHeaderRowDef="columns_ordenes")
+					mat-row(*matRowDef="let row; columns: columns_ordenes;")
+		#qrcode(#qrcode )
+			.impresion(*ngFor="let impresion of impresiones" id="{{impresion.id}}" )
+				#diseno
+					img(src="assets/images/glowrun5klogo.png").imagen

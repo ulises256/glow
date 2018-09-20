@@ -1,0 +1,5 @@
+mat-form-field(class="campo")
+    input(matInput placeholder="{{label}}" aria-label="proyecto" [matAutocomplete]="auto" [formControl]="filtroCtrl")
+    mat-autocomplete(#auto='matAutocomplete')
+        mat-option(*ngFor='let item of filteredItems | async', [value]='item.nombre' (click)="eventClick(item)")
+            span {{ item.nombre }}

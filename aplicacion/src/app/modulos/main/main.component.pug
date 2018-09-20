@@ -1,0 +1,19 @@
+main
+    header
+        include ./partials/header.pug
+    .contenido([@routerTransition]="getState(o)")
+        router-outlet(#o="outlet")
+    footer
+        .row
+            .izquierda
+                p 2018 Glow Run 5k
+            .centro
+                p Todos los Drechos Reservados
+            .derecha
+                a(href="https://www.facebook.com/TheGlowRun5K/")
+                    img(src="assets/images/glow_facebook.png")
+                a(href="https://www.instagram.com/glowrun5k/")                        
+                    img(src="assets/images/glow_instagram.png")
+                a(href="https://twitter.com/theglowrun5k?lang=es")
+                    img(src="assets/images/glow_twitter.png")
+    //- canvas.fireworks#fireworks

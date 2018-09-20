@@ -1,0 +1,39 @@
+.anadir
+    .anadir-content
+        form(*ngIf="form" [formGroup]="form" (ngSubmit)="guardar(form)" novalidate).contenedor
+            .contenido
+                mat-form-field(class="input-layout")
+                    input(matInput formControlName="nombre" placeholder="Nombre del patrocinadior" required)
+                mat-form-field(class="input-layout")
+                    mat-select(formControlName="tipo" placeholder="Tipo de patrocinador" required)
+                        mat-option( [value]="'Oro'") Oro
+                        mat-option( [value]="'Platino'") Platino
+                        mat-option( [value]="'Diamante'") Diamante
+                        mat-option( [value]="'Diamente 2'") Diamante 2               
+                mat-form-field(class="input-layout")
+                    mat-select(formControlName="tipoApoyo" placeholder="Selecione el tipo de apoyo" required)
+                        mat-option( [value]="'Efectivo'") Efectivo
+                        mat-option( [value]="'Especie'") Especie
+                mat-form-field(class="input-layout")
+                    mat-select(formControlName="puntoVenta" placeholder="Tiene puntos de ventas?" required)
+                        mat-option( [value]="'Si'") Si
+                        mat-option( [value]="'No'") No
+                mat-form-field(class="input-layout")
+                    input(matInput formControlName="sitioweb" placeholder="Sitio web del patrocinador")                                            
+                .logo
+                    button(mat-icon-button type="button" (click)="fileInput.click()" matTooltip="Subir Imagen")
+                        mat-icon add_a_photo
+                    input(#fileInput type="file" accept="*"  formControlName="logo" (change)="handleFileSelect($event)" style="display:none;" )
+                    .img(*ngIf="patrocinador.$imagen")
+                        img([src]="domSanitizer.bypassSecurityTrustUrl(patrocinador.$imagen.imagen)")
+                    mat-error(*ngIf="!patrocinador.imagen") Requiere una imagen
+            button(mat-raised-button color="primary" type="submit") Guardar datos
+                mat-icon save
+        .map
+            mat-toolbar(color="primary").titulo
+                mat-toolbar-row Añadir puntos de ventas
+                    button(mat-icon-button (click)="guardarPuntosVenta()" matTooltip="Guardar cambios").nuevo
+                        mat-icon save
+                    button(mat-icon-button (click)="verPuntos()" matTooltip="Ver puntos de ventas").nuevo
+                        mat-icon remove_red_eye                        
+            div(#googleMap style="width:100%;height:500px;" [hidden]="patrocinador?.$puntoVenta == 'No'")

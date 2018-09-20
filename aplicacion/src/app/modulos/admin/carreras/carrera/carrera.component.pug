@@ -1,0 +1,117 @@
+.perfil-carrera
+    .perfil-carrera-content
+        mat-accordion
+            mat-expansion-panel
+                mat-expansion-panel-header
+                    mat-panel-title Datos generales
+                    mat-panel-description Edite los datos basicos de esta carrera
+
+                mat-card.encabezado
+                    .titulo
+                        h1(*ngIf="carrera") {{carrera.$nombre}}
+                        button(mat-icon-button (click)="editar()" matTooltip="{{editable.tooltip}}")
+                            mat-icon {{editable.icon}}
+                    .info
+                        .detalles(*ngIf="carrera")
+                            mat-form-field(class="input-layout")
+                                input(
+                                        [disabled]="editable.disiabled"
+                                        matInput name="nombre"
+                                        placeholder="Nombre de la carrera"
+                                        [ngModel]="carrera.$nombre"
+                                        (ngModelChange)="carrera.$nombre = $event"
+                                        autocomplete="off" 
+                                        required)
+                            mat-form-field(class="input-layout")
+                                textarea(
+                                        [froalaEditor] [(froalaModel)]="carrera.$description" 
+                                        [disabled]="editable.disiabled"
+                                        matInput name="descripcion"
+                                        placeholder="Descrpción"
+                                        autocomplete="off"
+                                        rows="15"
+                                        required)
+                            mat-form-field(class="input-layout")
+                                input(matInput [disabled]="editable.disiabled" [ngModel]="carrera.$fechaini" (ngModelChange)="carrera.$fechaini = $event" [matDatepicker]="picker" placeholder="Seleciona fecha de inicio")
+                                mat-datepicker-toggle(matSuffix [for]="picker")
+                                mat-datepicker(#picker startView="year" [startAt]="fecha")
+                            mat-form-field(class="input-layout")
+                                input(
+                                        [disabled]="editable.disiabled"
+                                        matInput name="videoUrl"
+                                        placeholder="Enlace del video"
+                                        [ngModel]="carrera.$videoUrl"
+                                        (ngModelChange)="carrera.$videoUrl = $event"
+                                        autocomplete="off" 
+                                        required)
+                            mat-form-field(class="input-layout")    
+                                mat-select([disabled]="editable.disiabled" name="status" placeholder="Selecione el estatus"  [ngModel]="carrera.$status"  (change)="carrera.$status = $event.value" required)
+                                    mat-option( [value]="'proximo'") Proxima Carrera
+                                    mat-option( [value]="'realizado'") Carrera Realizada                                                          
+                        .ciudad
+                            .inputs
+                                form([formGroup]="formMunicipio" (ngSubmit)="anadirCiudad(formMunicipio)")
+                                    .inputs
+                                        mat-form-field.input-layout
+                                            mat-select(placeholder="Seleciona estado"  formControlName="estado" [disabled]="editable.disiabled" required)
+                                                mat-option --
+                                                mat-option(*ngFor="let estado of estados" [value]="estado" (click)="selecionarMunicipio(estado)") {{estado.$estado}}
+                                        mat-form-field.input-layout
+                                            mat-select(placeholder="Seleciona ciudad" formControlName="municipio" [disabled]="editable.disiabled" required)
+                                                mat-option --
+                                                mat-option(*ngFor="let ciudad of municipios | async" [value]="ciudad") {{ciudad.$municipio}}
+                                    .botones
+                                        button(mat-button color="warn" type="button" [disabled]="editable.disiabled") Limpiar
+                                            mat-icon cancel
+                                        button(mat-button color="primary" type="submit" [disabled]="editable.disiabled") Añadir
+                                            mat-icon done                                                        
+                            .ciudades-carrera
+                                mat-toolbar(color="primary").titulo
+                                    mat-toolbar-row Ciudades para esta carrera
+                                mat-list
+                                    mat-list-item( *ngFor="let ciudad of carrera?.getCiudades()").carrerita
+                                        h4 {{ciudad.$municipio}}
+                                        span.spaciador
+                                        button.right(mat-button (click)="quitarCiudad(ciudad)" [disabled]="editable.disiabled")
+                                            mat-icon delete
+                                        mat-divider
+            mat-expansion-panel
+                mat-expansion-panel-header
+                    mat-panel-title Patrocinadores
+                    mat-panel-description Agrege, quite o cree patrocinadores
+                mat-card.patrocinadores
+                    patrocinadores(
+                        [patrocinadoresCarrea]="carrera?.getPatrocinadores()"
+                        (quitarPatro)="quitarPatrocinador($event)"
+                        (agregarPatro)="agregarPatrocinador($event)")
+            mat-expansion-panel
+                mat-expansion-panel-header
+                    mat-panel-title Boletos
+                    mat-panel-description  Añada o quite boletos                     
+                mat-card.boletos
+                    boletos([boletos]="boletos"
+                    (quitarBoleto)="quitarBoleto($event)"
+                    (agregarBoleto)="agregarBoleto($event)")
+            mat-expansion-panel
+                mat-expansion-panel-header
+                    mat-panel-title Cupones
+                    mat-panel-description Agrege o quite cupones                  
+                mat-card.galeria
+                    cupones(
+                    [idCarrera]="carrera?.$id")                     
+            mat-expansion-panel
+                mat-expansion-panel-header
+                    mat-panel-title Ruta de la carrera
+                    mat-panel-description Maque el recorrido que tendra la carrera                  
+                mat-card.camino
+                    camino([rutas]="ruta")
+            mat-expansion-panel
+                mat-expansion-panel-header
+                    mat-panel-title Galeria
+                    mat-panel-description Agrege o quite imagenes                    
+                mat-card.galeria
+                    galeria(
+                    [imagenes]="carrera?.geImagenes()"
+                    (quitarImagen)="carrera?.seImagenes($event)"
+                    (agregarImagen)="carrera?.seImagenes($event)")
+                

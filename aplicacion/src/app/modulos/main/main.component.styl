@@ -1,0 +1,112 @@
+@import '../../../default.styl'
+
+animation(animation, duration = 1s, delay = 0s)
+    -webkit-animation animation duration cubic-bezier(0.445, 0.050, 0.550, 0.950) !important
+    animation animation duration cubic-bezier(0.445, 0.050, 0.550, 0.950) !important
+    -webkit-transition all duration ease-in-out !important
+    -moz-transition all duration ease-in-out !important
+    -o-transition all duration ease-in-out !important
+    transition all duration ease-in-out !important
+    -webkit-transition-delay delay ease-in-out !important
+    transition-delay delay ease-in-out !important
+
+
+main
+    width 100%
+    min-height 100vh
+    display grid
+    grid-template-columns 100% //indica que es de una columna de 100% de anccho
+    grid-template-rows 64px 10fr 25px //indica qie son 3 filas
+    background-color black
+    position relative
+    header, footer, mat-toolbar-row, .izquierda, .centro, .derecha, .row
+        display flex
+    header
+        width 100%
+        z-index 10
+        background transparent
+        justify-content center
+        align-items center
+        #menu
+            margin 0px !important
+            transition all 0.5s ease
+            background transparent !important
+            width 95%
+            mat-toolbar-row
+                flex-direction row
+                color #757575
+                .izquierda, .centro, .derecha
+                    flex 1
+                    height 100%
+                    width 100%
+                    align-items center
+                .izquierda
+                    justify-content flex-start
+                    a
+                        height  100%
+                        img
+                            max-height 100%
+                .centro
+                    justify-content center
+                .derecha
+                    justify-content flex-end
+        #menu-movil
+            margin 0px !important
+            transition all 0.5s ease
+            mat-toolbar-row
+                flex-direction row
+                justify-content space-around
+                .menu, .inicio, .user
+                    width 100%
+    .contenido
+        width 100%
+        max-height 100%
+    footer
+        width 100%
+        justify-content center
+        align-items center
+        background-color black
+        .row
+            width 95%
+            justify-content center
+            max-height 100%
+            .izquierda, .centro, .derecha
+                display flex
+                align-items center
+                width 100%
+                color #00C834
+                p
+                    font-size 10px
+            .izquierda
+                justify-content flex-start
+            .centro
+                justify-content center
+            .derecha
+                justify-content flex-end
+                a
+                    width 20px
+                    height 20px
+                    justify-content flex-end
+                    margin 0px 25px 0px 25px
+                    img
+                        max-width 100%
+                        max-height 100%
+#fireworks
+    position absolute
+
+
+.active
+    color #FA6E30
+
+.link
+    &:hover
+        color #00C8F0
+
+.icono
+    color #61cd37
+
+.avatar
+    width 48px
+    height 48px
+    vertical-align middle
+    border-radius 50%

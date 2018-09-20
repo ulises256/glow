@@ -1,0 +1,260 @@
+funcion1()
+    // -webkit-transition all 0.30s ease-in-out
+    // -moz-transition all 0.30s ease-in-out
+    // -ms-transition all 0.30s ease-in-out
+    // -o-transition all 0.30s ease-in-out
+    outline none
+    box-sizing border-box
+    -webkit-box-sizing: border-box
+    -moz-box-sizing border-box
+    width 90%
+    background #fff
+    margin-bottom 1%
+    border 1px solid #ccc
+    padding 1%
+    color #555
+    font 15px Arial, Helvetica, sans-serif
+
+funcion2()
+    box-shadow 0 0 5px #78909C
+    border 1px solid #78909C
+
+rosa = #b7004b
+rosita = #ff3377
+naranja = #ef6100
+verde = #00c900
+azul = #1cccf4
+
+.boleto, .boleto-content, .fila1, .contador, .tiempo, .fila2, .title, .cuadrado, .fondo-cuadro, .info, .fecha, .precio, .fila3, .politicas, .fila4, .titulo-proximos, .carreras-proximas
+    display flex
+
+.boleto
+    width 100%
+    height 100%
+    justify-content center
+    .boleto-content
+        width 80%
+        flex-direction column
+        .fila1
+            justify-content flex-start
+            align-items center
+            height 50%
+            .contador
+                justify-content center
+                align-items center
+                position relative
+                width 300px
+                height 150px                
+                .tiempo
+                    flex-direction column
+                    justify-content center
+                    align-items center
+                    color white
+                    background-color naranja
+                    width 255px
+                    height 75px
+                    z-index 2
+                    h3, p
+                        font-family Loto
+                        margin 0px
+                    h3
+                        font-size 18px
+                svg
+                    position absolute
+                    transform translate(0px, -27px) rotate(25deg)
+                    path
+                        fill naranja
+
+                    
+        .fila2
+            height 100%
+            justify-content center
+            .title
+                color white
+                flex-direction column
+                width 60%
+                height 70%
+                align-items flex-end
+                h1
+                    font-family Bebas
+                    font-size 100px
+                    margin 10px
+                    font-weight 50
+                p
+                    font-family Loto
+                    font-size 20px
+                    color naranja
+            .cuadrado
+                width 100%
+                justify-content center
+                height 97%
+                position relative
+                .fondo-cuadro
+                    flex-direction column
+                    background-color rosa
+                    width 75%
+                    height 63%
+                    z-index 2
+                    .card
+                        width 100%
+                        height 100%
+                        display flex
+                        flex-direction column
+                        .head
+                            height 150px
+                            width 100%
+                            display flex
+                            .debito
+                                background-color rosita
+                            .debito, .credito
+                                flex 1
+                                display flex
+                                flex-direction column
+                                justify-content center
+                                align-items: center
+                                h2
+                                    margin 0px
+                                    font-family Loto
+                                    color white
+                                .iconos
+                                    display flex
+                                    img 
+                                        flex 1
+                                        background-color: rgba(0,0,0, 0.7);
+                        .formulario
+                            height 320px
+                            display flex
+                            background-color white
+                            width 100%
+                            form
+                                width 100%
+                                display flex
+                                flex-direction column
+                                .contenido
+                                    width 100%
+                                    height 100%
+                                    display flex
+                                    flex-direction column
+                                    .nombre, .tarjeta, .fechasycodigo, .fecha, .codigo
+                                        display flex
+                                        height 100%
+                                        justify-content center
+                                        flex-direction column
+                                        align-items flex-start
+                                        width 90%
+                                        padding 15px
+
+                                    .fechasycodigo
+                                        flex-direction row
+                                        .fecha
+                                            .inputs
+                                                display flex
+                                                input 
+                                                    flex 1
+
+                                    .erros
+                                        display flex
+                                        flex-direction column
+
+                                .botones
+                                    display flex
+                                    width 100%
+                                    justify-content center
+                                    align-items center
+                                    height 45%
+                                    .fondito
+                                         position relative
+                                         width 100px
+                                         justify-content center
+                                         align-items center
+                                         button 
+                                            width 50%
+                                            background-color rosita
+                                            z-index 2
+                                            &:hover
+                                                background-color rosa                                            
+                                        .svg1, .svg2
+                                            position absolute
+                                            svg
+                                                width 100%
+                                                path
+                                                    fill rosita
+                                        .svg1
+                                            transform translate(-36px, -62px) rotate(4deg) scale(0.7)
+                                        .svg2
+                                            transform translate(18px, -44px) rotate(0deg) scale(0.8)                                       
+                        
+                .svg1, .svg2
+                    position absolute
+                    svg
+                        width 100%
+                        path
+                            fill rosita
+                .svg1
+                    transform translate(284px, -51px) rotate(-15deg) scale(1.3)
+                    svg
+                        width 100%
+                        path
+                            fill rosa                    
+                .svg2
+                    transform translate(-335px, 138px) rotate(-52deg) scale(0.7)                
+        .fila3
+            height 30%
+            justify-content center
+            align-items center            
+            .politicas                                
+                justify-content center
+                align-items center
+                height 100%
+                color gray
+                flex-direction column
+                .open
+                    display flex
+                    width 100%
+                    justify-content center
+                    align-items center
+                    p
+                        margin 0px
+                        font-size 20px
+                    a
+                    max-width 100%
+                        img 
+                            max-width 100%
+                    margin-right 15px
+                .encryp
+                    display flex
+                    flex-direction row
+                    justify-content center
+                    align-items center
+                    p
+                        margin 0px
+                        font-size 20px
+                    img 
+                        max-width 100%
+
+        .fila4
+            height 30%
+            justify-content center
+            align-items center
+            .titulo-proximos
+                color gray
+                margin-right: 80px;
+            .carreras-proximas
+                h3
+                    font-family Gloss_And_Bloom
+                    margin-right 40px
+                    &:hover
+                        cursor pointer
+
+label
+    color gray
+    font-family Loto
+
+input 
+    width 90%
+    border 2px solid gray
+    padding: 1%;
+input[type='password']
+    background-image: url(assets/images/lock.png);
+    background-position: 100%;
+    background-repeat: no-repeat;    

@@ -1,0 +1,25 @@
+.contacto
+	.contacto-content
+		.encabezado
+			h1 Contactanos
+			.descripcion
+				p Contactanos para cualquier duda, información o sugerencia llenando el formulario a continuacion:
+				a(mat-button href="https://www.facebook.com/TheGlowRun5K" target="_blank").fb
+					span Tambien puedes contactarnos via
+					img(src="assets/images/F_icon.svg")
+		form([formGroup]="form" (ngSubmit)="enviar(form)" novalidate).formulario
+			.contenido
+				mat-form-field(class="input-layout" appearance="outline")
+					input(matInput formControlName="nombre" placeholder="Nombre y Apellidos" autocomplete="off" required)
+				mat-form-field(class="input-layout" appearance="outline")
+					input(matInput formControlName="asunto" placeholder="Asunto" autocomplete="off" required)
+				mat-form-field(class="input-layout" appearance="outline")
+					textarea(matInput  formControlName="descripcion" placeholder="Descripción" rows="10" required)
+				mat-form-field(class="input-layout" appearance="outline")
+					input(matInput type="text" formControlName="correo" autocomplete="off" placeholder="Correo" required)
+				.botones
+					button(mat-raised-button type="submit" matTooltip="Registrate" color="primary")
+						mat-icon done
+						span Enviar
+		mat-error(*ngIf="enviado == false") No se puedo enviar su correo intente mas tarde.
+		mat-error(*ngIf="enviado == true") Enviado! Nos contactaremos con usted.

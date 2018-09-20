@@ -1,0 +1,18 @@
+div(class="contenedor" [class.isMobile]="mobileQuery.matches")
+    mat-toolbar(color="primary" class="nav-toolbar mat-elevation-z8")
+        button(mat-icon-button (click)="snav.toggle()" matTooltip="Abrir menu")
+            mat-icon menu
+        span(class="tool-bar-spacer")
+        h1 Bienvenido Administrador
+        span(class="tool-bar-spacer")
+        button(mat-icon-button  [routerLink]="'/'" (click)="salir()" matTooltip="Salir")
+            mat-icon exit_to_app
+    mat-sidenav-container(class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 100 : 0")
+        mat-sidenav(#snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="100" [opened]="false")
+            mat-nav-list
+                mat-list-item(*ngFor="let link of navLinks" class="mat-elevation-z2" [routerLink]="link.path" [routerLinkActive]="['active-nav']" (click)="snav.toggle()" )
+                    mat-icon {{link.icon}}
+                    p {{link.label}}
+        mat-sidenav-content
+            div.contenido
+                router-outlet

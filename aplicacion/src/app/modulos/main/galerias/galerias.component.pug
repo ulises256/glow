@@ -1,0 +1,21 @@
+
+.galeria
+    .galeria-content
+        h1 Galeria
+        .carrera(*ngFor="let carrera of carreras")
+            .galerias(matTooltip="Arrastra las imagenes hacia la izquierda o derecha" [matTooltipClass]="'tooltip'")
+                drag-scroll(*ngIf="carrera?.geImagenes()?.length > 0"
+                    style="width: 100%;"
+                    scrollbar-hidden="true"
+                    )
+                    imagen(
+                        
+                        drag-scroll-item
+                        *ngFor="let imagen of carrera?.geImagenes()"
+                        [id]="imagen.getId()")
+            h2 {{carrera.$nombre}}
+            .linea(id="linea" #linea [@animateState]="state")
+
+
+
+

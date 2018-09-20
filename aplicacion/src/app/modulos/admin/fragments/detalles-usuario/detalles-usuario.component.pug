@@ -1,0 +1,23 @@
+
+mat-dialog-content.contenido
+	.encabezado
+		.foto
+			img([src]="usuario.getFoto()" *ngIf="usuario.getFoto()")
+		.lateral
+			.nombre
+				h2 Nombre: {{usuario.getNombre()}}
+				h2 Apellidos: {{usuario.getApellidos()}}
+			.correoedadsexociudad
+				h3 	Correo: {{usuario.getCorreo()}}		
+				h3 	Edad: {{usuario.getEdad()}}
+				h3 	Ciudad: {{usuario.getNombre()}}
+	.cuerpo
+		.entero
+			h4 Modo de enterarse de la carrera
+			p {{usuario.getNombre()}}
+		.gustos
+			h4 Gustos
+			p {{usuario.getNombre()}}		
+mat-dialog-actions.botones
+	button(mat-button type="button" (click)="cancelar()") Cerrar
+		mat-icon close

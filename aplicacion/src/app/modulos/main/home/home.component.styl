@@ -1,0 +1,161 @@
+mobile = 'screen and (max-width: 768px)'
+
+@import '../../../../default.styl'
+
+transition(duracion, delay)
+    -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    -webkit-transition-delay delay ease-in-out
+    transition-delay delay ease-in-out
+
+*
+    font-family Loto
+
+.home
+    display flex
+    width 100%
+    height 100%
+    justify-content center
+    align-items center
+    background-color black
+    .home-content
+        display flex
+        width 100%
+        height 100%
+        flex-direction column
+        .portada
+            position relative
+            width 100%
+            height 70%
+            @media mobile
+                height 440px
+            .background
+                position absolute
+                top 0
+                left 0
+                height 100%
+                width 100%
+                pointer-events none
+                overflow hidden
+            .contador
+                position absolute
+                background rgba(0, 0, 0, 0.5)
+                color #f1f1f1
+                width 100%
+                max-width 100%
+                height 100%
+                display flex
+                flex-direction column
+                justify-content center
+                align-items center
+                .titulo, .tiempo, .boton, .dias, .horas, .minutos, .segundos
+                    display flex
+                    justify-content center
+                    align-items  center
+                    width 100%
+                    h1, h3
+                        font-size 50px
+                        margin:  0px
+                        font-family Loto
+                        font-weight 50
+                        @media screen and (max-width: 1048px)
+                            font-size 38px
+                        @media mobile
+                            font-size 20px
+                .tiempo
+                    height 50%
+                    width 70%
+                    .dias, .horas, .minutos, .segundos
+                        width 50%
+                        flex-direction column
+                        h3
+                            font-size 25px
+                .boton
+                    transition(500ms, 0)
+                    &:hover
+                        transform scale(1.1)
+                    a
+                        padding 8px 25px
+                        background-color white
+                        color black
+        .linea
+            width 100%
+            height 8px
+            background-color verde
+        .piesito
+            display flex
+            color white
+            width 100%
+            height 30%
+            justify-content center
+            aling-items center
+            .piesito-content
+                display flex
+                width 90%
+                justify-content center
+                align-items center
+                @media screen and (max-width: 970px)
+                    flex-direction column
+                @media mobile
+                    flex-direction column
+                .galeria
+                    flex 2
+                    display flex
+                    // justify-content center
+                    // align-items center
+                    // margin 10px 10px 10px 10px
+                    transition(500ms, 0)
+                    .titulo-content
+                        // flex 1
+                        position relative
+                        display flex
+                        justify-content flex-end
+                        svg
+                            position absolute
+                            transform translate(0px, -27px) rotate(25deg)
+                            path
+                                fill naranja
+                        .titu
+                            padding 10px
+                            display flex
+                            justify-content center
+                            align-items center
+                            flex-direction column
+                            background-color naranja
+                            width 70%
+                            z-index: 2;
+                            h2
+                                font-size 50px
+                                margin 0px
+                                font-family Bebas
+                                @media normal
+                                    font-size 30px
+                    .images
+                        flex 2
+                        .imagen
+                            width 100%
+                            height 100%
+                            background-size cover
+                            background-position center
+                            background-repeat no-repeat
+                    &:hover
+                        cursor pointer
+                        transform rotate(1deg) scale(1.1)
+                .tit, .segundo, .tercero
+                    display flex
+                    flex 1
+                    justify-content center
+                    align-items center
+                .tit
+                    flex-direction column
+                    h2
+                        font-size 45px
+                        font-family Bebas
+                        margin 40px
+                        @media normal
+                            font-size 25px
+                            margin 25px
+                .proximas-container
+                    flex 4
+                    height 100%
+                    width 100%

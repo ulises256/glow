@@ -1,0 +1,12 @@
+.camino
+	.camino-content
+		.map
+			mat-toolbar(color="primary").titulo
+				mat-toolbar-row  Crear camino
+					button(mat-icon-button (click)="guardarPuntos()" matTooltip="Guardar cambios").nuevo
+						mat-icon save
+					button(mat-icon-button (click)="mostrarRuta()" matTooltip="Ver Ver camino").nuevo
+						mat-icon remove_red_eye
+					button(mat-icon-button (click)="borarRuta()" matTooltip="Limpiar").nuevo
+						mat-icon clear						
+			div(#googleMap style="width:100%;height:500px;")

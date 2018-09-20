@@ -1,0 +1,28 @@
+mobile766 = 'only screen and (max-width: 766px)'
+
+.video-js
+    position absolute
+    // z-index -2
+    width 100vw
+    height 56.25vw
+    min-height 100vh
+    min-width 177.77vh
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    .vjs-big-play-button
+        background-color black
+        opacity .6
+    .vjs-play-progress
+        background-color black
+    .vjs-control:hover:before, .vjs-control:focus:before 
+	    text-shadow 0 0 1em #f00
+    .vjs-overlay
+        background linear-gradient(200deg, rgba(0, 0, 0, 0.9) 20%, transparent)
+        height 100%
+        width 100% !important
+    .vjs-overlay-top-left
+        top 0px
+        left 0px
+    .vjs-tech
+        pointer-events none
