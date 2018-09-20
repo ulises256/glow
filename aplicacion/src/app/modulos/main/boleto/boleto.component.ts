@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CarreraService, AuthService, OrdenService } from '../../../services';
@@ -43,7 +43,13 @@ export class BoletoComponent implements OnInit, OnDestroy, AfterViewInit{
 		"#1cccf4"
 	]
 
-	constructor(private auth: AuthService,private route: ActivatedRoute, private router:Router, public location: Location, private timerService: TimerService, private ordenService: OrdenService) { }
+	constructor(
+		private auth: AuthService,
+		private route: ActivatedRoute,
+		private router:Router,
+		public location: Location,
+		private timerService: TimerService,
+		private ordenService: OrdenService) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(params => {

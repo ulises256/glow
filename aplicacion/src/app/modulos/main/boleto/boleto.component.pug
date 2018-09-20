@@ -12,6 +12,8 @@
 				h1 BOLETOS
 			.cuadrado
 				.fondo-cuadro
+					.detalles
+						a([routerLink]="'/carreras/' + carrera.$id"  target="_blank" [ngStyle]="{'color': 'white'}") Ver detalles de la convocatoria
 					.info
 						.fecha
 							p.dia {{carrera?.$fechaini | date : 'dd'}}

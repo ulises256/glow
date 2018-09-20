@@ -4,6 +4,8 @@ naranja = #ef6100
 verde = #00c900
 azul = #1cccf4
 
+@import '../../../../default.styl'
+
 .boleto, .boleto-content, .fila1, .contador, .tiempo, .fila2, .title, .cuadrado, .fondo-cuadro, .info, .fecha, .precio, .fila3, .politicas, .fila4, .titulo-proximos, .carreras-proximas
     display flex
 
@@ -69,6 +71,9 @@ azul = #1cccf4
                     background-color rosita
                     width 75%
                     height 80%
+                    @media normal 
+                        width 100%
+                        height 100%
                     z-index 2
                     .info
                         flex-direction row
@@ -105,7 +110,7 @@ azul = #1cccf4
                                     font-size 20px
                                     font-family Gloss_And_Bloom
                                     &.promocion
-                                        font-size 25px
+                                        font-size 20px
                                         font-family Loto
 
                             .despues

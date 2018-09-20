@@ -56,8 +56,10 @@ export class LoginComponent implements OnInit {
 		this.route.params.subscribe(params => {
 			params.token? this.auth.loginFacebook(params.token).then(res => {
 
-				res != false ?
-				this.router.navigate(['/user']) : this.router.navigate(['/'])
+				if(res != false)
+					this.auth.obtenerRedirect().subscribe(path =>  path ? this.router.navigate([path]) : this.router.navigate(['/user']))
+				else
+					this.router.navigate(['/'])
 			}) : null;
 		  });
 		  
