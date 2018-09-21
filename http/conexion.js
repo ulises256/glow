@@ -2,8 +2,8 @@ var mysql = require('mysql');
 var Sequelize = require('sequelize');
 
 
-var sequelize = new Sequelize('glow', 'root', 'qwertyuiop', {
-    host: '35.227.93.103',
+var sequelize = new Sequelize('glow', 'malaga', 'qwertyuiop', {
+    host: '35.238.80.211',
     dialect: 'mysql',
     port: '3306',
     pool: {
@@ -34,9 +34,9 @@ var sequelize = new Sequelize('glow', 'root', 'qwertyuiop', {
 //     }
 // });
 
-// sequelize.sync()
-// .then(() =>  console.log('Connecion realizada'))
-// .catch(err =>  console.log('No se puede conectar a la bd:', err))
+sequelize.sync()
+.then(() =>  console.log('Connecion realizada'))
+.catch(err =>  console.log('No se puede conectar a la bd:', err))
 
 module.exports.Sequelize = Sequelize;
 module.exports.sequelize = sequelize;
