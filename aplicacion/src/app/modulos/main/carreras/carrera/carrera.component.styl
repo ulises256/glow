@@ -5,6 +5,12 @@ azul = #1cccf4
 
 @import '../../../../../default.styl'
 
+transition(duracion, delay)
+    -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
+    -webkit-transition-delay delay ease-in-out
+    transition-delay delay ease-in-out
+
 .carrera
     display flex
     justify-content center
@@ -37,8 +43,10 @@ azul = #1cccf4
                 .titulo, .registro
                     margin 10px
                     align-items baseline
-                    h1
-                        &.titulo
+                    h1  
+                        width 100%
+                        margin 0px
+                        &.titulo2
                             font-family Bebas
                             font-size 50px
                     a
@@ -47,6 +55,49 @@ azul = #1cccf4
                             font-size 25px
                             cursor pointer
                             color verde
+                .titulo
+                    flex-direction row
+                    .contador
+                        justify-content center
+                        align-items center
+                        position relative
+                        width 300px
+                        height 150px                
+                        .tiempo
+                            flex-direction column
+                            justify-content center
+                            align-items center
+                            color white
+                            background-color naranja
+                            width 255px
+                            height 75px
+                            z-index 2
+                            position absolute
+                            h3, p
+                                font-family Loto
+                                margin 0px
+                            h3
+                                font-size 18px
+                        svg
+                            position absolute
+                            z-index 1
+                            transform translate(-14px, -49px) rotate(0deg)
+                            path
+                                fill naranja   
+                .ahora
+                    display flex
+                    h2, p
+                        margin 0px
+                        font-family Loto
+                        font-size 60px
+                    p
+                        font-size 20px
+                        font-family Gloss_And_Bloom
+                        &.promocion
+                            font-size 20px
+                            font-family Loto
+
+
                 .mapita
                     height 300px
                     margin 20px 0
@@ -65,6 +116,17 @@ azul = #1cccf4
                         flex 1
                         height 100%
                         max-width 100%
+                h4
+                    margin: 32px;
+                .boton
+                    transition(500ms, 0)
+                    &:hover
+                        transform scale(1.1)
+                    a
+                        padding 8px 25px
+                        background-color azul
+                        color black                    
+                  
             .derecha
                 @media normal
                     margin-left 20px

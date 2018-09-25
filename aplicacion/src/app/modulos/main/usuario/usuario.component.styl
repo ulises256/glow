@@ -1,3 +1,12 @@
+rosa = #b7004b
+rosita = #ff3377
+naranja = #ef6100
+verde = #00c900
+azul = #1cccf4
+
+@import '../../../../default.styl'
+
+
 .usuario
     display flex
     width 100%
@@ -67,6 +76,17 @@
                 width 100%
                 mat-form-field
                     width 100%
+            .inputs2
+                display flex
+                justify-content center
+                flex-direction column
+                width 100%
+                mat-form-field
+                    width 100%
+                .ciudad2
+                    display flex  
+                    mat-form-field
+                        width 100%                           
             .preguntas
                 padding 5px
 
@@ -89,3 +109,12 @@
                 height 1000px
         img
             position absolute
+
+input, textarea
+    color verde !important
+
+.mat-select-value
+    color rosita !important
+
+.mat-select-placeholder
+    color naranja !important

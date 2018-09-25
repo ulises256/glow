@@ -22,7 +22,6 @@ export class PatrocinadoresAdminComponent implements OnInit {
 
 		const dialogRef = this.dialog.open(AnadirNuevoPatrocinadorComponent, {
 			width: '800px',
-			height: '800px',
 			data: patrocinador
 		});
 

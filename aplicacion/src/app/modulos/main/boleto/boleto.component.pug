@@ -11,7 +11,7 @@
 				h1 COMPRAR
 				h1 BOLETOS
 			.cuadrado
-				.fondo-cuadro
+				.fondo-cuadro(*ngIf="carrera && actual")
 					.detalles
 						a([routerLink]="'/carreras/' + carrera.$id"  target="_blank" [ngStyle]="{'color': 'white'}") Ver detalles de la convocatoria
 					.info
@@ -24,8 +24,8 @@
 								p.promocion Promocion: 
 								h2 {{actual?.$precioini | currency}}
 								p.mxn mxn
-							.despues
-								p.des Precio real:
+							.despues(*ngIf="proximo")
+								p.des Precio regular:
 								p.pre {{proximo?.$precioini | currency}}
 								p.mxn mxn
 					.productos

@@ -58,11 +58,14 @@ export class BoletoComponent implements OnInit, OnDestroy, AfterViewInit{
 				.then(r => r && r.data ? this.carrera = new Carrera(r.data, 'bandera') : null)
 				.then(c => c.getBoletos().then(boletitos => this.boletos = boletitos))
 				.then(b => {
-					this.actual = this.boletos.find(n => n.getActivo() == true);
-					this.precioCompra =  this.actual.$preciofin;
-					this.proximo = this.boletos.find(n => n.$fechaini> this.actual.$fechafin);
+					console.log(this.boletos.length)
+					this.boletos.length<=0 ? (alert('Lo sentimos, alparecer no hay boletos todavia para esta carrera'), this.router.navigate(['/'])):(
+					this.actual = this.boletos.find(n => n.getActivo() == true),
+					this.precioCompra =  this.actual.$preciofin,
+					this.proximo = this.boletos.find(n => n.$fechaini> this.actual.$fechafin));
 				})
 				.then(a => this.time1$ = this.timerService.timer(new Date(moment(this.actual.$fechafin).format('MMMM DD, YYYY HH:mm:ss'))))
+				.catch(err => console.log(''))
 
 				this.sub = this.auth.obtenerUsuario().subscribe(user => {
 					this.auth.modificarRedirect('/comprar/' + params['id'])
@@ -127,7 +130,7 @@ export class BoletoComponent implements OnInit, OnDestroy, AfterViewInit{
 			   .then(res => res && res.data ?  this.ordenService.modificarOrdenPendiente(new Orden(res.data)) : null)
 			   .then(algo => this.router.navigate(['/pago']))
 		}else {
-			window.alert('Acepte los terminos y condiciones y las politicas de privacidad antes de comprar')
+			window.alert('Acepte los términos y condiciones y las políticas de privacidad antes de comprar')
 		}
 
 

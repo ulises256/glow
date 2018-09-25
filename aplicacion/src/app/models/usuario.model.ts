@@ -10,10 +10,10 @@ export class Usuario {
     private correo: string
     private edad: number;
     private tipo: string;
-    private sexo: string;
-    private ciudad: string;
-    private entero: string;
-    private gustos: string;
+     sexo: string;
+     ciudad: string;
+     entero: string;
+     gustos: string;
     private id_open: number;
     private foto;
     // private carreras: Carrera[];
@@ -41,7 +41,21 @@ export class Usuario {
     }
 
     public actualizarDatos() {
-        UsuarioService.actualizarUsuario(this);
+
+        let usuari = {
+            id: this.getId(),
+            nombre: this.getNombre(),
+            apellidos: this.getApellidos(),
+            correo: this.getCorreo(),
+             edad: this.edad,
+             tipo: this.getTipo(),
+             sexo: this.sexo,
+             ciudad: this.ciudad,
+             entero: this.entero,
+             gustos: this.gustos,
+             foto: this.getFoto()
+        }        
+        UsuarioService.actualizarUsuario(usuari);
     }
 
 /*     public getCarreras(): Carrera[] {
@@ -118,6 +132,7 @@ export class Usuario {
     }
 
     public setCiudad(value: string) {
+        console.log(value)
         this.ciudad = value;
     }
     
@@ -126,6 +141,7 @@ export class Usuario {
     }
 
     public setEntero(value: string) {
+        console.log(value)
         this.entero = value;
     }
     
@@ -134,6 +150,7 @@ export class Usuario {
     }
 
     public setGustos(value: string) {
+        console.log(value)
         this.gustos = value;
     }
 

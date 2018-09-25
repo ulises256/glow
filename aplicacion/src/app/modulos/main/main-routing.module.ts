@@ -63,7 +63,7 @@ const main_routers: Routes = [
 			{
 				path: 'user',
 				component: UsuarioComponent,
-				canActivate: [AuthGuard]
+				// canActivate: [AuthGuard]
 			},
 			{
 				path: 'user/:token',

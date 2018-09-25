@@ -1,12 +1,16 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarreraService, AuthService } from '../../../../services';
-import { Carrera, GoogleMaps, Punto, Usuario } from '../../../../models';
-
+import { Carrera, GoogleMaps, Punto, Usuario, Boleto } from '../../../../models';
+import { Observable } from 'rxjs';
+import { Time, TimerService } from '../../../../services/timer.service';
+import * as moment from 'moment'
+import * as _ from 'lodash';
 @Component({
 	selector: 'app-carrera',
 	templateUrl: './carrera.component.pug',
-	styleUrls: ['./carrera.component.styl']
+	styleUrls: ['./carrera.component.styl'],
+	providers: [TimerService]
 })
 export class CarreraComponent implements OnInit, AfterViewInit{
 	carrera: Carrera;
@@ -17,8 +21,12 @@ export class CarreraComponent implements OnInit, AfterViewInit{
 	carrerasProximas: Carrera[] = []
 	user: Usuario;
 	slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
+	boletos: Boleto [];
+	actual: Boleto = undefined;
+	proximo: Boleto = undefined;
+	time1$: Observable<Time>;
 
-	constructor(private route: ActivatedRoute, private router: Router, private auth: AuthService) {
+	constructor(private route: ActivatedRoute, private router: Router, private auth: AuthService, private timerService: TimerService,) {
 		this.carrera = new Carrera({}, 'bandera');
 		this.imagenes = [
 			'assets/images/cuadritos/glow_home_1.png',
@@ -67,12 +75,25 @@ export class CarreraComponent implements OnInit, AfterViewInit{
 			CarreraService.obtenerCarrera(+params['id'])
 				.then(r => r && r.data ? this.carrera = new Carrera(r.data) : null)
 				.then(c => this.crearmapa())
+				.then(c => this.carrera.getBoletos().then(boletitos => this.boletos = boletitos))
+				.then(b => {
+					console.log(this.boletos.length)
+					this.boletos.length<=0 ? (alert('Lo sentimos, alparecer no hay boletos todavia para esta carrera'), this.router.navigate(['/'])):(
+					this.actual = this.boletos.find(n => n.getActivo() == true),
+					this.proximo = this.boletos.find(n => n.$fechaini> this.actual.$fechafin));
+				})
+				.then(a => this.time1$ = this.timerService.timer(new Date(moment(this.actual.$fechafin).format('MMMM DD, YYYY HH:mm:ss'))))
 				.then(c => this.carrera.getRuta()
 					.then(r => r.getPuntos().then((p: Punto[]) => {
-						this.mapa.modificarZoom(14);
+						this.mapa.modificarZoom(10);
 						this.mapa.modificarCentro(p[0].$y, p[0].$x);
 						this.mapa.construirPolyLine(p)
-				})))
+				})).then(algo => {
+					let markerss =  this.carrera.getPatrocinadores().map(patro => patro.$markers)
+					let markers = _.flatten(markerss);
+					console.log(markers)
+					this.mapa.anadirMarkers(markers);
+				}))
 		});
 
 		this.auth.obtenerUsuario().subscribe(user =>  this.user = user)

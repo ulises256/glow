@@ -20,32 +20,32 @@
 				
 						
 						mat-form-field(class="input-layout" )
-							input(matInput formControlName="correo"  (ngModelChange)="usuario.setCorreo($event)"  placeholder="correo" autocomplete="off"  required)
+							input(matInput formControlName="correo"  (ngModelChange)="usuario.setCorreo($event)"  placeholder="Correo" autocomplete="off"  required)
 					
 						mat-form-field(class="input-layout")
-							input(matInput formControlName="edad"  (ngModelChange)="usuario.setEdad($event)"  placeholder="edad" autocomplete="off"  required)
+							input(matInput formControlName="edad"  (ngModelChange)="usuario.setEdad($event)"  placeholder="Edad" autocomplete="off"  required)
 					
-					.inputs
+					.inputs2
 						mat-form-field(class="input-layout")
-							mat-select( name="status" formControlName="sexo" (change)="usuario.setSexo($event)" placeholder="genero" required)
+							mat-select( name="status" formControlName="sexo"  [(ngModel)]="usuario.sexo" (change)="usuario.setSexo($event.value)" placeholder="Genero" required)
 								mat-option( [value]="'male'") Hombre
 								mat-option( [value]="'female'") Mujer							
-						
-						mat-form-field.input-layout
-							mat-select(placeholder="Seleciona estado" [disabled]="editable.disiabled" required )
-								mat-option --
-								mat-option(*ngFor="let estado of estados" [value]="estado" (click)="selecionarMunicipio(estado)") {{estado.$estado}}
-						mat-form-field.input-layout
-							mat-select(placeholder="Seleciona ciudad" formControlName="ciudad" (change)="usuario.setCiudad($event.$municipio)"  [disabled]="editable.disiabled" required)
-								mat-option --
-								mat-option(*ngFor="let ciudad of municipios | async" [value]="ciudad") {{ciudad.$municipio}}
-			.preguntas
-				.inputs
-					mat-form-field(class="input-layout")
-						textarea(matInput formControlName="entero" rows="3" placeholder="¿Como te enteraste de la carrera?"  (ngModelChange)="usuario.setEntero($event)"  autocomplete="off" place required)
-					
-					mat-form-field(class="input-layout")
-						textarea(matInput formControlName="gustos" rows="3" placeholder="¿Nos contarias tus gustos?"   (ngModelChange)="usuario.setGustos($event)"  autocomplete="off"  required)
+						.ciudad2
+							mat-form-field.input-layout
+								mat-select( formControlName="ciudad" placeholder="Seleciona estado" [disabled]="editable.disiabled" required )
+									mat-option --
+									mat-option(*ngFor="let estado of estados" [value]="estado" (click)="selecionarMunicipio(estado)") {{estado.$estado}}
+							mat-form-field.input-layout
+								mat-select(  placeholder="Seleciona ciudad" formControlName="ciudad"  [(ngModel)]="usuario.ciudad" (change)="usuario.setCiudad($event.$municipio)"  [disabled]="editable.disiabled" required)
+									mat-option --
+									mat-option(*ngFor="let ciudad of municipios | async" [value]="ciudad") {{ciudad.$municipio}}
+						.preguntas
+							.inputs
+								mat-form-field(class="input-layout")
+									textarea(matInput formControlName="entero" rows="3" placeholder="¿Como te enteraste de la carrera?"   [(ngModel)]="usuario.entero" autocomplete="off" place required)
+								
+								mat-form-field(class="input-layout")
+									textarea(matInput formControlName="gustos" rows="3" placeholder="¿Nos contarias tus gustos?"    [(ngModel)]="usuario.gustos" autocomplete="off"  required)
 				
 		.ordenes(*ngIf="dataSourceOrdenes")
 			h2 Tus boletos

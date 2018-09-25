@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID} from '@angular/core';
 import { CommonModule } from '@angular/common';
+// import { registerLocaleData } from '@angular/common';
+// import localeES from '@angular/common/locales/es-MX'
+// registerLocaleData(localeES, 'es_MX')
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
@@ -73,6 +76,7 @@ import { PopupComponent } from './partials/popup/popup.component';
 	entryComponents: [
 		LoginComponent,
 		LoadingComponent
-	]
+	],
+	// providers: [{ provide: LOCALE_ID, useValue: "es_MX" }]
 })
 export class MainModule { }

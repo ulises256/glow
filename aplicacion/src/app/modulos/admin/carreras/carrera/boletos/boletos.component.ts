@@ -28,7 +28,6 @@ export class BoletosComponent implements OnInit, AfterViewInit {
         
         const dialogRef = this.dialog.open(AnadirBoletoComponent, {
             width: '800px',
-            height: '800px',
             data: boleto
         });
 

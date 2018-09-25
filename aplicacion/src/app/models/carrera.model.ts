@@ -150,6 +150,7 @@ export class Carrera {
 	}
 
 	public setPatrocinadores(value: Patrocinador) {
+		console.log(value)
 		CarreraService.agregarPatrocinador(this.id, value)
 			.then(res => res && res.data ? this.patrocinadores.push(new Patrocinador(res.data)) : null);
 	}

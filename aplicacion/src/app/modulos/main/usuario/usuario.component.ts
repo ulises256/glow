@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { Usuario, Orden, Estado } from '../../../models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService, EstadoService, OrdenService } from '../../../services';
@@ -11,7 +11,8 @@ import * as html2canvas from "html2canvas"
 @Component({
 	selector: 'usuario',
 	templateUrl: './usuario.component.pug',
-	styleUrls: ['./usuario.component.styl']
+	styleUrls: ['./usuario.component.styl'],
+	encapsulation: ViewEncapsulation.None
 })
 export class UsuarioComponent implements OnInit, OnDestroy {
 	usuarioForm: FormGroup;
@@ -64,9 +65,9 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 					correo: this.formBuilder.control({ value: this.usuario.getCorreo(), disabled: true }, Validators.required),
 					edad: this.formBuilder.control({ value: this.usuario.getEdad(), disabled: this.editable.disiabled }, Validators.required),
 					sexo: this.formBuilder.control({ value: this.usuario.getSexo(), disabled: this.editable.disiabled }, Validators.required),
-					ciudad: this.formBuilder.control({ value: this.usuario.getCiudad(), disabled: this.editable.disiabled }, Validators.required),
-					entero: this.formBuilder.control({ value: this.usuario.getEntero(), disabled: this.editable.disiabled }, Validators.required),
-					gustos: this.formBuilder.control({ value: this.usuario.getGustos(), disabled: this.editable.disiabled }, Validators.required),
+					ciudad: this.formBuilder.control({ value: this.usuario.ciudad, disabled: this.editable.disiabled }, Validators.required),
+					entero: this.formBuilder.control({ value: this.usuario.entero, disabled: this.editable.disiabled }, Validators.required),
+					gustos: this.formBuilder.control({ value: this.usuario.gustos, disabled: this.editable.disiabled }, Validators.required),
 				});
 
 				this.columns_ordenes = this.columnsOrdenes.map(n => n.id);

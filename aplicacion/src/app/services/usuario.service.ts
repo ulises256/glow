@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { APILOCAL } from '../../environments/environment'
 import * as axios from 'axios'
-import { Orden, Carrera } from '../models';
+import { Orden, Carrera, Usuario } from '../models';
 
 @Injectable()
 
@@ -17,7 +17,8 @@ export class UsuarioService {
     }
 
     public static actualizarUsuario(usuario) {
-        return axios.default.put(this.apiUrl + '/data/usuario/' + usuario.getId(), usuario);
+        console.log(usuario)
+        return axios.default.put(this.apiUrl + '/data/usuario/' + usuario.id, usuario).catch(err => console.log('vergas we'));
     }
 
     public static materiales(idUsuario) {

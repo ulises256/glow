@@ -36,6 +36,10 @@ router.get("/carreras", function(req, res) {
     res.render("index");
 })
 
+router.get("/faq", function(req, res) {
+    res.render("index");
+})
+
 
 router.get("/contacto", function(req, res) {
     res.render("index");

@@ -3,15 +3,24 @@
         .arriba
             .izquierda
                 .titulo
-                    h1.titulo {{carrera.$nombre}}
+                    h1.titulo2 {{carrera.$nombre}}
+                    .contador(*ngIf="time1$")
+                        .tiempo(*ngIf="time1$ | async as time1")
+                            p El precio elevará su costo en:
+                            h3 {{time1.days}} dias {{time1.hours}} hrs
+                        include ../../partials/manchita.pug                    
                 .boton(*ngIf="user")
-                    button(mat-raised-button color="primary" id="btn-comprar" (click)="irAComprar()") COMPRAR BOLETO
+                    a(mat-raised-button color="primary" id="btn-comprar" (click)="irAComprar()") COMPRAR BOLETO
                 .registro(*ngIf="!(user)")
                     a.reg([routerLink]="['/login']") registrate
+                .ahora
+                    p.promocion Precio actual: 
+                    h2 {{actual?.$precioini | currency}}
+                    p.mxn mxn
                 
                 .mapita
+                    p Posible ruta y ubucaciones de donde puedes comprar tus boletos
                     div(#googleMap style="width:100%;height:100%;")
-                
                 h4 PATROCINADORES
                 .patrocinadores
                     .patro(*ngFor="let patro of carrera.getPatrocinadores()")

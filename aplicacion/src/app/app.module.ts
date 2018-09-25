@@ -26,6 +26,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { DragScrollModule } from 'ngx-drag-scroll';
 
 
+
+
 @NgModule({
    declarations: [
       AppComponent
