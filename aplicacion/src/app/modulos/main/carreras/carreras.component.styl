@@ -3,6 +3,8 @@ rosa = #f53277
 azul = #40ccf4
 
 @import '../../../../default.styl'
+mobile = 'screen and (max-width: 768px) '
+tablet = 'screen and (min-width: 768px) and (max-width : 1024px)'
 
 transition(duracion, delay)
     -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
@@ -44,6 +46,8 @@ transition(duracion, delay)
                     font-size 62px
                     font-family Loto
                     color white
+                    @media tablet
+                        font-size 25px
             .carreritas-container
                 position relative
                 width 85%

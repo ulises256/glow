@@ -67,7 +67,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
 		public matIconRegistry: MatIconRegistry,
 		private us: AuthService) {
 		this.usuario = new Usuario({})
-		this.mobileQuery = media.matchMedia('(max-width: 768px)');
+		this.mobileQuery = media.matchMedia('(max-width: 800px)');
 		this._mobileQueryListener = () => changeDetectorRef.detectChanges();
 		this.mobileQuery.addListener(this._mobileQueryListener);
 		this.navLinks = [

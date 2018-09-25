@@ -12,15 +12,13 @@ import { ConfirmDelDialogComponent } from '../fragments/confirm-del-dialog/confi
 })
 export class CarrerasComponent implements OnInit {
 	carreras: Carrera[] = [];
-	private dimensionesMoviles = {altura: '600px', anchura:  '1250px'}
 	constructor(private dialog: MatDialog, private _router: Router) { }
 
 	agregarCarrera() {
 		let carrera = new Carrera({}, 'bandera');
         
         const dialogRef = this.dialog.open(AnadirCarreraComponent, {
-            width: this.dimensionesMoviles.anchura,
-            height: this.dimensionesMoviles.altura,
+            width: '600px',
             data: carrera
         });
 
@@ -33,7 +31,6 @@ export class CarrerasComponent implements OnInit {
 	eliminarCarrera(carrea: Carrera) {
 		const dialogRef = this.dialog.open(ConfirmDelDialogComponent, {
             width: '290px',
-            height: '200px'
         });
 
         dialogRef.afterClosed().subscribe(result => {

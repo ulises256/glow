@@ -1,6 +1,7 @@
 
 @import '../../../../../default.styl'
-
+mobile = 'screen and (max-width: 768px) '
+tablet = 'screen and (min-width: 768px) and (max-width : 1024px)'
 transition(duracion, delay)
     -webkit-transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
     transition all duracion cubic-bezier(0.445, 0.050, 0.550, 0.950)
@@ -19,6 +20,8 @@ transition(duracion, delay)
     flex 1
     height 100%
     width 100%
+    @media mobile
+        flex-direction column
     &:hover
         cursor pointer
         transform scale(1.2)

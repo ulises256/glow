@@ -24,22 +24,23 @@ mat-toolbar(id="menu-movil" color="primary" class="mat-elevation-z8" role="heade
         a(mat-button [routerLink]="navLinks[5].path"  [routerLinkActive]="['active-nav']" *ngIf="!usuario").user
             mat-icon account_circle
         a(mat-button [mat-menu-trigger-for]="menuUser" *ngIf="usuario && usuario.getId()").user
-            mat-icon account_circle            
+            mat-icon(*ngIf="usuario && !(usuario.getFoto())") account_circle
+            img(*ngIf="usuario && usuario.getFoto()" [src]="usuario.getFoto()", alt="foto perfil").avatar        
 
 
 mat-menu(#menu="matMenu")
-    a(mat-menu-item [routerLink]="navLinks[0].path" [routerLinkActive]="['active-nav']").link
+    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
         mat-icon {{navLinks[1].icon}}
         span {{navLinks[1].label}}
-    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
+    a(mat-menu-item [routerLink]="navLinks[2].path" [routerLinkActive]="['active-nav']").link
         mat-icon {{navLinks[2].icon}}
         span {{navLinks[2].label}}
-    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
+    a(mat-menu-item [routerLink]="navLinks[3].path" [routerLinkActive]="['active-nav']").link
         mat-icon {{navLinks[3].icon}}
         span {{navLinks[3].label}}
-    a(mat-menu-item [routerLink]="navLinks[1].path" [routerLinkActive]="['active-nav']").link
+    a(mat-menu-item [routerLink]="navLinks[4].path" [routerLinkActive]="['active-nav']").link
         mat-icon {{navLinks[4].icon}}
-        span {{navLinks[4].label}}                
+        span {{navLinks[4].label}}                        
 
 mat-menu(#menuUser="matMenu")
     a(mat-menu-item [routerLink]="['/user']").link

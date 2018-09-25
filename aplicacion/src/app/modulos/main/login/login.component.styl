@@ -1,3 +1,5 @@
+@import '../../../../default.styl'
+
 .input-layout
     width: 100%;
     flex: 1 1 auto;
@@ -37,6 +39,8 @@ div
             justify-content flex-start
             align-items center
             height 75%
+            @media mobile 
+                display none         
             .contador
                 display flex
                 justify-content center
@@ -66,6 +70,9 @@ div
                         fill naranja
         .cuerpo
             width 90%
+            @media mobile 
+                display flex
+                flex-direction column
             .tito
                 flex 1
                 justify-content flex-end
@@ -73,6 +80,7 @@ div
                     font-size 80px
                     font-family Bebas
                     font-weight 100
+                    margin 0px
             .back-login-icons
                 flex 1.5
                 position relative
@@ -95,6 +103,8 @@ div
         .pies
             .di
                 flex 1
+                @media mobile 
+                    display none
             p
                 flex 1
                 font-size 10px
@@ -102,4 +112,6 @@ div
                 color gray
 
             .do
+                @media mobile 
+                    display none
                 flex: 1
