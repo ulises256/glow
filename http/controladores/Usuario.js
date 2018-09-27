@@ -44,17 +44,17 @@ ex.enviarEmail = (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: 'glowrunmx1@gmail.com',
+            user: 'webglowrun5k@gmail.com',
             pass: '#1q2w3e4r'
         }
     });
 
     let mailOptions = {
-        from: '"Desde la página web - Nombre: " '+req.body.nombre+'<glowrunmx1@gmail.com>', // sender address
-        to: 'admin@glowrun5k.com.mx', // list of receivers
+        from: '"Envidado Desde la página web "<webglowrun5k@gmail.com>', // sender address
+        to: 'contacto@glowrun5k.com.mx', // list of receivers
         subject: req.body.asunto, // Subject line
         text: req.body.descripcion, // plain text body
-        html: '<p>'+req.body.descripcion+'</p><br>'+'Correo: '+req.body.correo // html body
+        html: '<h1>Nombre del contactador: '+req.body.nombre+'</h1><br><p>Asunto: '+req.body.descripcion+'</p><br>'+'Correo del contactador: '+req.body.correo // html body
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

@@ -157,7 +157,7 @@ export class PagoComponent implements OnInit {
 	
 		switch (tipo) {
 			case 'numero':
-				validaciones.push(Validators.pattern(/^-?(0|[1-9]\d*)?$/))
+				validaciones.push(Validators.pattern(/^-?(0|[0-9]\d*)?$/))
 				if(min)
 					validaciones.push(Validators.minLength(min))
 				if(max)
