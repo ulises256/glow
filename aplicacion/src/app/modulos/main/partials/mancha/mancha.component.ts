@@ -25,8 +25,13 @@ export class ManchaComponent implements OnInit, AfterViewInit{
 
         let x = atributos[0][  _.random(0, 1)  ]
         let y = atributos[1][  _.random(0, 1)  ]
-        this.estilos = { [ y ] : _.random(1, 3) + '%' , [ x ] :  _.random(20, 80 ) + '%' }
+        this.estilos = {
+            [ y ] : _.random(-30, -10) + '%' ,
+            [ x ] :  _.random( 20, 80 ) + '%',
+            transform : 'rotate(' + _.random( 0, 100 ) + 'deg) scale(' + _.random( .08, 2 )  + ')'
+        }
 
+        console.log(this.estilos)
 
     }
 

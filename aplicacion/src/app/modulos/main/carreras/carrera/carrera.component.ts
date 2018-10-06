@@ -48,7 +48,8 @@ export class CarreraComponent implements OnInit, AfterViewInit{
 		this.mapa = new GoogleMaps(this.gmapElement, {
 			latitude: 22.511883338637464,
 			longitude: -100.80013833094642,
-			zoom: 5
+			zoom: 5,
+			mapTypeId: 'satellite'
 		}, 1, true, 2);
 
 		this.mapa.contruirMapa();

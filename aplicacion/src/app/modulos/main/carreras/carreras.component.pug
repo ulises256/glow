@@ -21,8 +21,8 @@
                                     .nombre
                                         h2 {{carrera?.$nombre}}
                                         p Comprar boleto
-                        mancha-statica([color]="imagenes[i].color").mancha1
-                        mancha-statica([color]="imagenes[i].color").mancha2
+                                mancha([color]="imagenes[i].color")
+                                mancha([color]="imagenes[i].color")
                     .flecha-container
                         button.flecha(mat-icon-button)                        
                             mat-icon keyboard_arrow_right                                      
@@ -48,8 +48,8 @@
                                     .nombre
                                         h2 {{carrera?.$nombre}}
                                         p Ver carrera
-                        mancha-statica([color]="imagenes[i].color").mancha1
-                        mancha-statica([color]="imagenes[i].color").mancha2                           
+                                mancha([color]="imagenes[i].color")
+                                mancha([color]="imagenes[i].color")                      
                     .flecha-container
                         button.flecha(mat-icon-button (click)="siguiente()")
                             mat-icon keyboard_arrow_right 

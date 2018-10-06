@@ -43,9 +43,9 @@ transition(duracion, delay)
                 .titulo, .registro
                     margin 10px
                     align-items baseline
-                    h1  
+                    h1
                         width 100%
-                        margin 0px
+                        margin 5px
                         &.titulo2
                             font-family Bebas
                             font-size 50px
@@ -62,11 +62,12 @@ transition(duracion, delay)
                         align-items center
                         position relative
                         width 300px
-                        height 150px                
+                        height 150px
                         .tiempo
                             flex-direction column
                             justify-content center
                             align-items center
+                            display flex
                             color white
                             background-color naranja
                             width 255px
@@ -83,7 +84,7 @@ transition(duracion, delay)
                             z-index 1
                             transform translate(-14px, -49px) rotate(0deg)
                             path
-                                fill naranja   
+                                fill naranja
                 .ahora
                     display flex
                     h2, p
@@ -114,10 +115,15 @@ transition(duracion, delay)
                     justify-content center
                     .patro
                         flex 1
-                        height 100%
-                        max-width 100%
+                        height 50px
+                        width 50px
+                    mat-list
+                        width 100%
+                        mat-list-item
+                            color white
                 h4
-                    margin: 32px;
+                    margin: 0px
+                    margin-top 10px
                 .boton
                     transition(500ms, 0)
                     &:hover
@@ -125,8 +131,8 @@ transition(duracion, delay)
                     a
                         padding 8px 25px
                         background-color azul
-                        color black                    
-                  
+                        color black
+
             .derecha
                 @media normal
                     margin-left 20px

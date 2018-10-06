@@ -18,6 +18,9 @@ transition(duracion, delay)
     width 100%
     height calc(100vh - 80px)
     max-height 90vh
+    @media mobile
+        height inherit
+        max-height inherit
     .carreras-content
         display flex
         width 90%
@@ -34,27 +37,41 @@ transition(duracion, delay)
             width 100%
             max-height 100%
             height: 100%;
-            align-items: center;            
+            align-items: center;
+            @media mobile
+                flex-direction column
+                height inherit
+                max-height inherit
             .title
                 height 100%
                 display flex
                 flex 1
                 flex-direction column
                 width 25%
+                @media mobile
+                    width 100%
+                    height inherit
+                    max-height inherit
                 h1
-                    height  0px
                     font-size 62px
                     font-family Loto
                     color white
+                    margin 0px
                     @media tablet
                         font-size 25px
+                    @media mobile
+                        font-size 25px
+                        text-align center
             .carreritas-container
                 position relative
                 width 85%
                 .carreritas
                     display flex
                     align-items center
-                    height 300px                   
+                    height 300px
+                    @media mobile
+                        height inherit
+                        flex-direction column
                     .flecha-container
                         height 100%
                         display flex
@@ -71,7 +88,7 @@ transition(duracion, delay)
                         transition(500ms, 0)
                         &:hover
                             cursor pointer
-                            transform rotate(1deg) scale(1.1)                         
+                            transform rotate(1deg) scale(1.1)
                         .carrera
                             z-index 2
                             height 75%
@@ -79,46 +96,47 @@ transition(duracion, delay)
                             margin 10px
                             .imagen-container
                                 width 100%
-                                height 200px
+                                height calc(100% - 100px)
                                 background-position center
                                 background-size cover
+
                             .pie
                                 width 100%
                                 height: 100px;
-                                display flex
-                                align-items center
-                                justify-content center
+                                position relative
                                 .info
                                     z-index 2
                                     width 100%
-                                    height 80px
+                                    height 100px
                                     display flex
                                     flex-direction row
                                     justify-content center
                                     align-items center
-                                    padding 0 10px
                                     color white
+                                    position relative
                                     .fecha
                                         font-size 11px
                                         display flex
                                         flex-direction column
                                         flex 1
+                                        height 100%
                                         p
                                             font-family Loto
                                             margin 2px
                                             font-weight 300
                                             &.dia
                                                 font-size 35px
-                                                @media normal 
+                                                @media normal
                                                     font-size 28px
                                             &.mes
                                                 font-size 16px
-                                                @media normal 
-                                                    font-size 12px                                                
+                                                @media normal
+                                                    font-size 12px
                                             &.ano
                                                 font-size 10px
                                     .nombre
                                         flex 3
+                                        height 100%
                                         display flex
                                         flex-direction column
                                         justify-content center
@@ -126,22 +144,25 @@ transition(duracion, delay)
                                         p
                                             margin 0px
                                         h2
-                                            
+
                                             margin 0px
                                             font-size 30px
                                             text-align center
                                             font-family Gloss_And_Bloom
-                                            @media normal 
+                                            @media normal
                                                 font-size 20px
-                        mancha-statica
-                            width 100%
-                            position absolute
-                            &.mancha1
-                                @media normal 
-                                        transform: translate(109px, 247px) scale(0.3);
-                                transform: translate(148px, 199px) scale(0.3);
-                            &.mancha2
-                                @media normal 
-                                        transform: translate(-110px, 228px) scale(0.3);
-                                transform: translate(-138px, 211px) scale(0.3);
-
+                                mancha
+                                    width 100%
+                                    height 100%
+                                    position absolute
+                                    top 0px
+                                    left 0px
+                                    z-index 1
+                            // &.mancha1
+                            //     @media normal
+                            //             transform: translate(109px, 247px) scale(0.3);
+                            //     transform: translate(148px, 199px) scale(0.3);
+                            // &.mancha2
+                            //     @media normal
+                            //             transform: translate(-110px, 228px) scale(0.3);
+                            //     transform: translate(-138px, 211px) scale(0.3);

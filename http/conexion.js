@@ -12,6 +12,7 @@ var sequelize = new Sequelize('glow', 'malaga', 'qwertyuiop', {
         idle: 10000
     }
 });
+
 // mysql://bdfc46c39e3627:e8402ceb@us-cdbr-iron-east-04.cleardb.net/heroku_df534acfc8830eb?reconnect=true
 // var sequelize = new Sequelize('heroku_df534acfc8830eb', 'bdfc46c39e3627', 'e8402ceb', {
 //     host: 'us-cdbr-iron-east-04.cleardb.net',

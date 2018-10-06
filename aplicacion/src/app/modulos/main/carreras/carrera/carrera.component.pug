@@ -17,14 +17,17 @@
                     p.promocion Precio actual: 
                     h2 {{actual?.$precioini | currency}}
                     p.mxn mxn
-                
+                p Posible ruta y ubicaciones de donde puedes comprar tus boletos
                 .mapita
-                    p Posible ruta y ubucaciones de donde puedes comprar tus boletos
                     div(#googleMap style="width:100%;height:100%;")
                 h4 PATROCINADORES
                 .patrocinadores
                     .patro(*ngFor="let patro of carrera.getPatrocinadores()")
-                        imagen([id]="patro?.$imagen?.getId()" )
+                        imagen([id]="patro?.$imagen?.getId()")
+                .patrocinadores
+                    mat-list
+                        mat-list-item(*ngFor="let patro of carrera.getPatrocinadores()")
+                            p {{patro.nombre}}
                 .cositas
                     explicacion
             .centro

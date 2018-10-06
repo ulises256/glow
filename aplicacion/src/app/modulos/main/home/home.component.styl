@@ -70,17 +70,26 @@ transition(duracion, delay)
                         font-weight 50
                         @media screen and (max-width: 1048px)
                             font-size 38px
-                        @media mobile
-                            font-size 20px
+                    h1
+                        font-size 40px !important
+                        text-transform uppercase
                 .tiempo
                     height 50%
                     width 70%
+                    @media mobile
+                        flex-direction column
                     .dias, .horas, .minutos, .segundos
                         width 50%
                         flex-direction column
+                        @media mobile
+                            flex-direction row
+                            justify-content flex-start
+                            width 100%
+                            margin 5px
                         h3
                             @media mobile
-                                font-size 16px
+                                font-size 20px
+                                margin 0 5px
                             font-size 25px
                 .boton
                     transition(500ms, 0)
@@ -113,9 +122,10 @@ transition(duracion, delay)
                 .galeria
                     flex 2
                     display flex
-                    @media mobile 
+                    @media mobile
                         height 100%
                         width 100%
+                        margin 5px 0
                     // justify-content center
                     // align-items center
                     // margin 10px 10px 10px 10px
@@ -144,6 +154,8 @@ transition(duracion, delay)
                                 margin 0px
                                 font-family Bebas
                                 @media normal
+                                    font-size 30px
+                                @media mobile
                                     font-size 30px
                     .images
                         flex 2
